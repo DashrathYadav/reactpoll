@@ -3,27 +3,20 @@ import "./CubeLoder.css";
 
 function CubeLoder() {
   return (
-    <div>
-      <div className="scene">
-        <div className="shadow"></div>
-        <div className="jumper">
-          <div className="spinner">
-            <div className="scaler">
-              <div className="loader">
-                <div className="cuboid">
-                  <div className="cuboid__side"></div>
-                  <div className="cuboid__side"></div>
-                  <div className="cuboid__side"></div>
-                  <div className="cuboid__side"></div>
-                  <div className="cuboid__side"></div>
-                  <div className="cuboid__side"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <>
+      <div id="plotlybars" class="plotlybars-wrapper">
+      <div class="plotlybars">
+        <div class="plotlybars-bar b1"></div>
+        <div class="plotlybars-bar b2"></div>
+        <div class="plotlybars-bar b3"></div>
+        <div class="plotlybars-bar b4"></div>
+        <div class="plotlybars-bar b5"></div>
+        <div class="plotlybars-bar b6"></div>
+        <div class="plotlybars-bar b7"></div>
       </div>
-    </div>
+  <div class="plotlybars-text">Loading graph</div>
+ </div>
+    </>
   );
 }
 
