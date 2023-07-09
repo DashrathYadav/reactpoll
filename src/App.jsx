@@ -2,6 +2,9 @@ import LandingPage from "./Components/LandingPage"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import CubeLoder from "./Components/loders/CubeLoder"
+import Navbar from "./Components/header/Navbar"
+import LoginNavbar from "./Components/header/LoginNavbar"
+import Login from "./Components/user/Login"
 
 function App() {
   let page=useSelector((state)=>{ return state.component.page})
@@ -23,10 +26,11 @@ function App() {
   }
   
   return (
-    <>
-     <h1>hello world</h1>
-     <CubeLoder/>
-    </>
+   <div className="App">
+
+    { loginStatus===true? <Navbar/> : <LoginNavbar/> }
+    { componetToRender }
+   </div>
   )
 }
 

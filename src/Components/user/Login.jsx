@@ -3,7 +3,6 @@ import './user.css'
 import axios from "axios";
 import profile from "../../assets/profile.png"
 
-
 function Login(){
     const [formData,setformData] = useState({
         email: "",
