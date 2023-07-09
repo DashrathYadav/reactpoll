@@ -1,11 +1,10 @@
-import CubeLoder from "./Components/loders/CubeLoder"
+import LandingPage from "./Components/LandingPage"
 
 function App() {
 
   return (
     <>
-     <h1>hello world</h1>
-     <CubeLoder/>
+   <LandingPage/>
     </>
   )
 }
