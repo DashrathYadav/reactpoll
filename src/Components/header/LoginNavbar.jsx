@@ -1,23 +1,23 @@
 import React from "react";
-import "./Navbar.css"
-import logo from "../../assets/logo.png"
+import "./Navbar.css";
+import logo from "../../assets/logo.png";
 
-function Navbar() {
+function LoginNavbar() {
   return (
     <div>
       <nav className="Navbar--navbar">
-        <logo className= "Navbar--logoSpace">
-          <img className="Navbar--logo" src={logo} width={90} ></img>
-        </logo>
-        <list className="Navbar--list" >
-        <li className="Navbar--li">Login</li>
+        <div className="Navbar--logoSpace">
+          <img className="Navbar--logo" src={logo} width={90}></img>
+        </div>
+        <div className="Navbar--list">
+          <li className="Navbar--li">Login</li>
           <li className="Navbar--li">home</li>
-          <li  className="Navbar--li">About</li>
-          <li  className="Navbar--li">Contact</li>
-        </list>
+          <li className="Navbar--li">About</li>
+          <li className="Navbar--li">Contact</li>
+        </div>
       </nav>
     </div>
   );
 }
 
-export default Navbar;
+export default LoginNavbar;
