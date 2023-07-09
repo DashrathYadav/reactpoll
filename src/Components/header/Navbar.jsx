@@ -6,14 +6,14 @@ function Navbar() {
   return (
     <div>
       <nav className="Navbar--navbar">
-        <logo className= "Navbar--logoSpace">
+        <div className= "Navbar--logoSpace">
           <img className="Navbar--logo" src={logo} width={90} ></img>
-        </logo>
-        <list className="Navbar--list" >
+        </div>
+        <div className="Navbar--list" >
           <li className="Navbar--li">home</li>
           <li  className="Navbar--li">About</li>
           <li  className="Navbar--li">Contact</li>
-        </list>
+        </div>
       </nav>
     </div>
   );

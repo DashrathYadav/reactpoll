@@ -1,7 +1,6 @@
 .LandingPage--outer{
-    height: 100vh;
+    height: 85vh;
     overflow: hidden;
-    /* background-image: url("../assets/LandingCoverPage.jpg"); */
 }
 .LandingPage--img{
      width: 100vw;
