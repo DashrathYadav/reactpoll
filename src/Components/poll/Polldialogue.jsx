@@ -1,11 +1,12 @@
 import React from 'react'
-import "./dialogue.css"
-function Polldialogue() {
+import "./Polldialogue.css"
+function Polldialogue({Questions,Catogries,totalVotes}) {
   return (
     <>
-        <div className='Container'>
-                <p className='Question' id="Question"> Question{}</p><br></br>
-                <p className='category' id='category'>category:{}</p>
+        <div className='Polldialogue--Container Polldialogue--flex'>
+                <p className='Polldialogue--question Polldialogue--flex' id="Question"> Question{Questions}</p><br></br>
+                <p className='Polldialogue--category Polldialogue--flex' id='category'>category:{Catogries}</p>
+                <p>Total votes {totalVotes}</p>
 
         </div>
     </>

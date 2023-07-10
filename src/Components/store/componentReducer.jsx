@@ -2,13 +2,15 @@ import { createReducer } from "@reduxjs/toolkit";
 
 const initialState={
     loginStatus:false,
-    page:"login",
+    page:"landing",
     loginId:"",
 };
 
 const componentReducer= createReducer(initialState,{
     setPage:(state,payload)=>{
-        state.loginStatus=payload.page;
+        console.log(payload);
+        state.page=payload.page;
+        console.log(state.page)
     },
     setlogin:(state,payload)=>{
         state.loginStatus=true;

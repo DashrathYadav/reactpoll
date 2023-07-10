@@ -1,0 +1,8 @@
+.MidSection--container{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: yellow;
+
+}
