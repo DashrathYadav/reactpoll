@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import "./user.css";
 import axios from "axios";
 import profile from "../../assets/profile.png";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 function SignUp() {
+    const dispatch= useDispatch();
+    
   const [formData, setformData] = useState({
     name: "",
     email: "",
@@ -28,7 +32,25 @@ function SignUp() {
       })
       .then((response) => {
         console.log(response.status);
+
+        //checking user signup and updating id and name in store
         if (response.status === 201) {
+            console.log(response.data.result._id)
+
+            dispatch({
+                type:"setloginId",
+                _id:response.data.result._id,
+            });
+            dispatch({
+                type:"setUserName",
+                name:response.data.result.name,
+            });
+            dispatch({
+                type: "setPage",
+                page: "home",
+              });
+            
+
           console.log("success");
         }
       })
@@ -41,7 +63,6 @@ function SignUp() {
     const loginBtn = <a className="btn SignUp--lessMargine" onMouseOver={(e)=>{
 
         const btnEl=e.target;
-        console.log(btnEl);
         e.target.addEventListener("mouseover", (event) => {
               const x = event.pageX - btnEl.offsetLeft;
               const y = event.pageY - btnEl.offsetTop;

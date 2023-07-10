@@ -13,10 +13,10 @@ function Login() {
     password: "",
   });
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+
     setformData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [event.target.name]:event.target.value,
     }));
   };
   const handleSignIn = (event) => {
@@ -25,6 +25,8 @@ function Login() {
       email: formData.email,
       password: formData.password,
     };
+   console.log(data)
+
     axios
       .post("http://localhost:3000/userLogin", data, {
         headers: { "Access-Control-Allow-Origin": "*" },
@@ -32,6 +34,22 @@ function Login() {
       .then((response) => {
         console.log(response.status);
         if (response.status === 200) {
+            console.log(response);
+            dispatch({
+                type:"setloginId",
+                _id:response.data.result._id,
+            });
+            dispatch({
+                type:"setUserName",
+                name:response.data.result.name,
+            })
+            dispatch({
+                type:"set"
+            })
+            dispatch({
+                type: "setPage",
+                page: "home",
+              });
           console.log("success");
         }
       })
@@ -53,7 +71,6 @@ function Login() {
   const loginBtn = <a className="btn"  onMouseOver={(e)=>{
 
         const btnEl=e.target;
-        console.log(btnEl);
         e.target.addEventListener("mouseover", (event) => {
               const x = event.pageX - btnEl.offsetLeft;
               const y = event.pageY - btnEl.offsetTop;

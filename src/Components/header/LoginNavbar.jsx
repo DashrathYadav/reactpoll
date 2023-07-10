@@ -7,6 +7,10 @@ import { useDispatch } from "react-redux";
 function LoginNavbar() {
   const dispatch = useDispatch();
 
+  const userName= useSelector((state)=>{
+    return state.component.name;
+  })
+
   const setPageLogin = (e) => {
     console.log("login clicked");
     dispatch({
@@ -30,14 +34,18 @@ function LoginNavbar() {
           <img className="Navbar--logo" src={logo} width={90}></img>
         </div>
         <div className="Navbar--list">
-          <button className="Navbar--li" onClick={setPageLogin}>
+          {/* conditonal redering between name and login button*/}
+          
+          { userName ==="" ?<button className="Navbar--button" onClick={setPageLogin}>
             Login
-          </button>
-          <button className="Navbar--li" onClick={setPageHome}>
+          </button> : <li className="Navbar--button Navbar--li">{userName}</li>
+          }
+          
+          <button className="Navbar--button" onClick={setPageHome}>
             home
           </button>
-          <button className="Navbar--li">About</button>
-          <button className="Navbar--li">Contact</button>
+          <button className="Navbar--button">About</button>
+          <button className="Navbar--button">Contact</button>
         </div>
       </nav>
     </div>
