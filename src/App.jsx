@@ -6,6 +6,7 @@ import Navbar from "./Components/header/Navbar"
 import LoginNavbar from "./Components/header/LoginNavbar"
 import Login from "./Components/user/Login"
 import MidSection from "./Components/MidSection"
+import Footer from "./Components/footer/Footer"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       {loginStatus === true ? <Navbar /> : <LoginNavbar />}
       <MidSection />
+      <Footer/>
     </div>
   );
 }

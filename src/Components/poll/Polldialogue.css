@@ -1,15 +1,45 @@
+.Polldialogue--Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, .6);
+    margin: 10px;
+    border-radius: 2px;
 
-.Polldialogue--flex{
+}
+
+/* From https://css.glass */
+
+
+
+.Polldialogue--Container p {
+
+    padding: 5px;
+    margin: 5px;
+    padding-left: 10px;
+
+
+}
+
+.Polldialogue--flex {
     display: flex;
 }
 
-.Polldialogue--Container{
-    flex-direction: column;
-    background-color: aqua;
-    padding: 3px;
-    margin: 6px;
-    padding-left: 5px;
+.Polldialogue--span{
+    font-size: large;
+    font-family: cursive;
+
+}
+
+.Polldialogue--span-ans{
+    font-size: x-large;
+    font-family: cursive;
+
 }
 
 
 
+/* ---------frost css */
+
+/* From https://css.glass */

@@ -1,7 +1,7 @@
 .MainContainer {
     display: flex;  
     flex-direction: column;
-    background-color: rgb(198, 180, 180);
+    background-color: rgb(255, 255, 255);
     border-radius: 8px;
     justify-content: center;
     align-items: center;
@@ -39,3 +39,64 @@
   width: 20%;
   height: 20%;
 }
+
+
+ 
+.btn {
+  background-color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  color: black;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  background-color: orangered;
+  width: 0;
+  height: 0;
+  left: var(--xPos);
+  top: var(--yPos);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: width 0.5s, height 0.5s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.Login--signup{
+  margin-top: 20px;
+  padding: 20px;
+}
+.Login--signup-span{
+  position: relative;
+  cursor:pointer;
+  user-select:none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+
+}
+.Login--signup-span:hover{
+  color: blue;
+  top: 1px;
+}
+
+/* .SignUp--lessMargine{
+  margin-top: 5px;
+  padding: 0;
+} */

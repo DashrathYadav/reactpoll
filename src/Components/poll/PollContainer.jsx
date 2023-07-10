@@ -39,10 +39,10 @@ function PollContainer() {
 
 
   return (
-    <div className='PollContainer--container'>
+    <div className='PollContainer--Container'>
         {
             polls.map( (ele,key)=>{
-                return <Polldialogue Questions={ele.Question} Catogries={ele.catogries} totalVotes={ele.totalVotes}/>
+                return <Polldialogue  key={key} Questions={ele.Question} Catogries={ele.catogries} totalVotes={ele.totalVotes}/>
             })
         }
     </div>

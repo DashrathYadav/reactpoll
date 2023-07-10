@@ -2,3 +2,4 @@ landing
 login
 signup
 home
+signup
