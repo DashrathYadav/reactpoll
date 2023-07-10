@@ -1,0 +1,33 @@
+.pollForm--MainContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(198, 180, 180);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Set a fixed height */
+  }
+  
+  .pollForm--options {
+    display: flex;
+    padding: 2%;
+    flex-direction: column;
+  }
+  .pollForm--categories {
+    display: flex;
+    padding: 2%;
+    flex-direction: column;
+  }
+  
+  .pollForm--form input, .pollForm--form textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2c3e50;
+    font-size: 13px;
+  }
+  
