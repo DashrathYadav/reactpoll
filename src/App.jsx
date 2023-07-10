@@ -1,22 +1,14 @@
-import LandingPage from "./Components/LandingPage";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import CubeLoder from "./Components/loders/CubeLoder";
-import Navbar from "./Components/header/Navbar";
-import LoginNavbar from "./Components/header/LoginNavbar";
-import Login from "./Components/user/Login";
-import MidSection from "./Components/MidSection";
-
-/*
-App-> 4 section
- > Header
- > left menu (hidden) 
- > midSection
- >footer
-
-*/
+import LandingPage from "./Components/LandingPage"
+import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import CubeLoder from "./Components/loders/CubeLoder"
+import Navbar from "./Components/header/Navbar"
+import LoginNavbar from "./Components/header/LoginNavbar"
+import Login from "./Components/user/Login"
+import MidSection from "./Components/MidSection"
 
 function App() {
+
   let loginStatus = useSelector((state) => {
     return state.component.loginStatus;
   });
