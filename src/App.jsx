@@ -5,6 +5,8 @@ import CubeLoder from "./Components/loders/CubeLoder"
 import Navbar from "./Components/header/Navbar"
 import LoginNavbar from "./Components/header/LoginNavbar"
 import Login from "./Components/user/Login"
+import Polldialogue from "./Components/poll/Polldialogue"
+import Section from "./Components/Section"
 
 function App() {
   let page=useSelector((state)=>{ return state.component.page})
@@ -30,6 +32,7 @@ function App() {
 
     { loginStatus===true? <Navbar/> : <LoginNavbar/> }
     { componetToRender }
+    <Section/>
    </div>
   )
 }

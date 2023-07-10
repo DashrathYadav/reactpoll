@@ -1,5 +1,25 @@
-.Container{
+.Polldialogue--Container{
+    padding:10px;
+    margin: 5px;
     display: flex;
+    /* width: inherit; */
     flex-direction: column;
     background-color: aqua;
+    flex-wrap: wrap;
+}
+
+.Polldialogue--Question{
+
+    display: flex;
+}
+
+.Polldialogue--category{
+
+    display: flex;
+
+}
+
+.Polldialogue--totalVotes{
+
+
 }
