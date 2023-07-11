@@ -5,13 +5,17 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 export default function PollForm() {
+
+
+  let id = useSelector((state) => {
+    return state.component.loginId;
+  });
+ 
+
   const [formData, setFormData] = useState({
     question: "",
     options: [{ text: "", count: 0 }],
     categories: [""],
-    id: useSelector((state) => {
-      return state.component.loginId;
-    })
   });
 
   const handleInputChange = (e) => {
@@ -38,11 +42,12 @@ export default function PollForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(formData.userId)
     const data = {
       Question: formData.question,
       Options: formData.options,
       Category: formData.categories,
-      creator_Id: formData.id
+      creatorId: id
     };
     console.log(data)
     axios

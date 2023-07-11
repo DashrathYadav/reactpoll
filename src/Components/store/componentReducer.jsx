@@ -21,6 +21,7 @@ const componentReducer= createReducer(initialState,{
     },
     setloginId:(state,payload)=>{
         state.loginId=payload._id;
+        
     },
     setUserName:(state,payload)=>{
         state.name=payload.name;

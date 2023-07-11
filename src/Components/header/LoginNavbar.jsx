@@ -6,10 +6,12 @@ import { useDispatch } from "react-redux";
 
 function LoginNavbar() {
   const dispatch = useDispatch();
+  
 
   const userName= useSelector((state)=>{
     return state.component.name;
   })
+
 
   const setPageLogin = (e) => {
     console.log("login clicked");
