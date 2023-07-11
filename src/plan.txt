@@ -1,0 +1,17 @@
+//component rendering calling name
+landing
+login
+signup
+home
+signup
+pollForm
+
+
+
+
+
+/*pln
+
+polling-UI
+appole
+*

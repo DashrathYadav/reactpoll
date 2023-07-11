@@ -6,9 +6,8 @@ import Navbar from "./Components/header/Navbar"
 import LoginNavbar from "./Components/header/LoginNavbar"
 import Login from "./Components/user/Login"
 import MidSection from "./Components/MidSection"
-import PollForm from "./Components/poll/pollForm"
 import Footer from "./Components/footer/Footer"
-
+import PollForm from "./Components/poll/pollForm"
 
 function App() {
 
@@ -20,7 +19,7 @@ function App() {
   return (
     <div className="App">
       {loginStatus === true ? <Navbar /> : <LoginNavbar />}
-  {/* <MidSection /> */}
+      {/* <MidSection /> */}
       <PollForm/>
   <Footer/>
       

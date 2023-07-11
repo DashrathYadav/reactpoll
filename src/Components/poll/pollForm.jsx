@@ -4,10 +4,13 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-function PollForm() {
-  const loginId = useSelector((state) => {
+export default function PollForm() {
+
+
+  let id = useSelector((state) => {
     return state.component.loginId;
   });
+ 
 
   const [formData, setFormData] = useState({
     question: "",
@@ -19,46 +22,39 @@ function PollForm() {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: value
     }));
   };
 
   const handleAddOption = () => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      options: [...prevFormData.options, { text: "", count: 0 }],
+      options: [...prevFormData.options, { text: "", count: 0 }]
     }));
   };
 
   const handleAddCategory = () => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      categories: [...prevFormData.categories, ""],
+      categories: [...prevFormData.categories, ""]
     }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    if (loginId === "") {
-      console.log("You are not logdIn");
-      return;
-    }
-
     const data = {
       Question: formData.question,
       Options: formData.options,
       Category: formData.categories,
-      creatorId: loginId,
+      creatorId: id,
     };
-    console.log(data);
+    console.log(data)
     axios
       .post("http://localhost:3000/createPoll", data, {
-        headers: { "Access-Control-Allow-Origin": "*" },
+        headers: { "Access-Control-Allow-Origin": "*" }
       })
       .then((response) => {
         console.log(response.status);
-        console.log(response);
       })
       .catch((error) => {
         console.log(error.message);
@@ -111,7 +107,7 @@ function PollForm() {
                 newOptions[index].text = e.target.value;
                 setFormData((prevFormData) => ({
                   ...prevFormData,
-                  options: newOptions,
+                  options: newOptions
                 }));
               }}
             />
@@ -136,7 +132,7 @@ function PollForm() {
                 newCategories[index] = e.target.value;
                 setFormData((prevFormData) => ({
                   ...prevFormData,
-                  categories: newCategories,
+                  categories: newCategories
                 }));
               }}
             />
@@ -150,5 +146,3 @@ function PollForm() {
     </div>
   );
 }
-
-export default PollForm;
