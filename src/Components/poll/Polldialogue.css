@@ -13,7 +13,7 @@
 
 
 
-.Polldialogue--Container p {
+.Polldialogue--questionPolldialogue--flex, .Polldialogue--CategoryPolldialogue--flex,.Polldialogue--TotvotesPolldialogue--flex {
 
     padding: 5px;
     margin: 5px;

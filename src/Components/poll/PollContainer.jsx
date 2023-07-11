@@ -65,6 +65,7 @@ function PollContainer() {
     <div className='PollContainer--Container'>
         {
             polls.map( (ele,key)=>{
+                console.log(ele.Question)
                 return <Polldialogue  key={key} Questions={ele.Question} Catogries={ele.catogries} totalVotes={ele.totalVotes}/>
             })
         }
