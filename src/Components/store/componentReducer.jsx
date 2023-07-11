@@ -1,10 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
+//Dummy login data on dashrath mongoDb
+//Dashrath
+// 64ad04dca8cb4edcfc1484a2
 
 const initialState={
     loginStatus:false,
     page:"landing",
-    loginId:"",
-    name:"",
+    loginId:"64ad04dca8cb4edcfc1484a2",
+    name:"rough",
     scrollPos:0
 };
 

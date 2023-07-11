@@ -53,7 +53,7 @@ function PollContainer() {
   
     const handelScroll=()=>{
         const scrollPos=localStorage.getItem("scrollPos")
-        console.log("running handelScroll and scrollPos =",scrollPos);
+        // console.log("running handelScroll and scrollPos =",scrollPos);
         window.scrollTo(0,300)
     }
    let page = useSelector((state) => {
