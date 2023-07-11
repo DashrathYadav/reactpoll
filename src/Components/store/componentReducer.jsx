@@ -5,6 +5,7 @@ const initialState={
     page:"landing",
     loginId:"",
     name:"",
+    scrollPos:0
 };
 
 const componentReducer= createReducer(initialState,{

@@ -10,6 +10,7 @@ import Footer from "./Components/footer/Footer"
 
 function App() {
 
+
   let loginStatus = useSelector((state) => {
     return state.component.loginStatus;
   });
@@ -18,6 +19,7 @@ function App() {
     <div className="App">
       {loginStatus === true ? <Navbar /> : <LoginNavbar />}
       <MidSection />
+     
       <Footer/>
     </div>
   );

@@ -1,6 +1,7 @@
 .PollContainer--container{
     display: flex;
     background-color: green;
+    overflow: scroll;
 }
 
 .Polldialogue--question{
