@@ -11,6 +11,7 @@ import PollForm from "./Components/poll/pollForm"
 
 function App() {
 
+
   let loginStatus = useSelector((state) => {
     return state.component.loginStatus;
   });
@@ -19,7 +20,7 @@ function App() {
     <div className="App">
       {loginStatus === true ? <Navbar /> : <LoginNavbar />}
       <MidSection />
-      <pollForm/>
+      <PollForm/>
       <Footer/>
     </div>
   );

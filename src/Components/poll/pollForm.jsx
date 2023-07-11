@@ -42,12 +42,11 @@ export default function PollForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData.userId)
     const data = {
       Question: formData.question,
       Options: formData.options,
       Category: formData.categories,
-      creatorId: id
+      creatorId: id,
     };
     console.log(data)
     axios

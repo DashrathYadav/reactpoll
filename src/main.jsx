@@ -5,7 +5,11 @@ import './index.css'
 import { Provider } from 'react-redux'
 import store from './Components/store/Store.jsx'
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
+  
+  
+
   <Provider store={store}>
   <React.StrictMode>
     <App />

@@ -10,7 +10,7 @@ import PollContainer from "./poll/pollContainer";
 function MidSection() {
 
     //dummy array of poles
-    
+
 
     let loginStatus = useSelector((state) => {
         return state.component.loginStatus;
@@ -36,6 +36,8 @@ function MidSection() {
 
   return <div className="MidSection--container">
     {midSection}
+    { window.scrollTo(0,400)}
+    
   </div>;
 }
 
