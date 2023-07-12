@@ -6,6 +6,7 @@ import axios from "axios";
 export default function PollingUi() {
 
   const pid = { pid: "64aed4a1d229c8f9872c3e26" };
+  {/* pid for testing will have to change */}
 
   
   const [fetchPoll, setFetchPoll] = useState({
@@ -33,11 +34,11 @@ export default function PollingUi() {
           totalVotes: got.voter_ids.length,
           pollid: got._id,
           options: got.Options.map(option => ({
-            option: got.opt,
-            count: got.count
+            opt: option.opt,
+            count: option.count.toString()
           }))
         });
-        console.log(fetchPoll.category)
+        console.log(fetchPoll.options)
       })
       .catch((error) => {
         console.log(error.message);
@@ -139,7 +140,7 @@ export default function PollingUi() {
                 onChange={() => handleItemClick(index)}
                 value={index}
               />
-              <label htmlFor={`radio-${index}`}>{fetchPoll.options.text}</label>
+              <label htmlFor={`radio-${index}`}>{fetchPoll.options.opt}</label>
             </div>
           );
         })}
