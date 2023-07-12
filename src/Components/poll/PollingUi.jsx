@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function PollingUi() {
 
-  const pid = { pid: "64aec382d229c8f9872c3df5" };
+  const pid = { pid: "64aed4a1d229c8f9872c3e26" };
 
   
   const [fetchPoll, setFetchPoll] = useState({
@@ -24,6 +24,7 @@ export default function PollingUi() {
       })
       .then((response) => {
         const got = response.data.poll;
+        console.log(got)
 
         setFetchPoll({
           category: got.Category,
