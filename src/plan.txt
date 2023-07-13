@@ -8,10 +8,8 @@ pollForm
 
 
 
-
-
 /*pln
 
 polling-UI
-appole
+slide-bar
 *
