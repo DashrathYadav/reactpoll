@@ -15,7 +15,7 @@ export default function PollingUi() {
     creatorId: "",
     totalVotes: "",
     pollid: "",
-    options: [],
+    options: []
   });
 
   const getData = () => {
@@ -25,7 +25,6 @@ export default function PollingUi() {
       })
       .then((response) => {
         const got = response.data.poll;
-        console.log(got)
 
         setFetchPoll({
           category: got.Category,
@@ -33,10 +32,7 @@ export default function PollingUi() {
           creatorId: got.creatorId,
           totalVotes: got.voter_ids.length,
           pollid: got._id,
-          options: got.Options.map(option => ({
-            opt: option.opt,
-            count: option.count.toString()
-          }))
+          options: got.Options.map(option => (option.opt))
         });
         console.log(fetchPoll.options)
       })
@@ -140,7 +136,7 @@ export default function PollingUi() {
                 onChange={() => handleItemClick(index)}
                 value={index}
               />
-              <label htmlFor={`radio-${index}`}>{fetchPoll.options.opt}</label>
+              <label htmlFor={`radio-${index}`}>{fetchPoll.options[index]}</label>
             </div>
           );
         })}
