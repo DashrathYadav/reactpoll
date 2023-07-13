@@ -2,53 +2,26 @@ import React, { useEffect, useState } from 'react'
 import Polldialogue from './Polldialogue'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import axios from 'axios'
 
 function PollContainer() {
 
-    // const [polls,setPolls] = useState({
-    //     Question:"",
-    //     catogries:[],
-    //     totalVotes:0
-    // });
+    const [polls,setPolls] = useState([]);
 
-    const polls=[
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-    ]
+      const getPolls= ()=>{
+        axios
+        .post("http://localhost:3000/getPolls", {
+            headers: { "Access-Control-Allow-Origin": "*" },
+          })
+          .then((response)=>{
+                setPolls(response.data.poll);
 
-    {/* WIP 
-      const getData= ()=>{
-        axios.post
+          })
+          .catch((err)=>{
+            console.log(err)
+          })
     }
-    */}
+
   
 
 
@@ -69,23 +42,21 @@ function PollContainer() {
   
     const handelScroll=()=>{
         const scrollPos=localStorage.getItem("scrollPos")
-        // console.log("running handelScroll and scrollPos =",scrollPos);
         window.scrollTo(0,300)
     }
    let page = useSelector((state) => {
       return state.component.page;
     });
 
-
   return (
     <div className='PollContainer--Container'>
         {
             polls.map( (ele,key)=>{
-                console.log(ele.Question)
-                return <Polldialogue  key={key} Questions={ele.Question} Catogries={ele.catogries} totalVotes={ele.totalVotes}/>
+                console.log(ele)
+                return <Polldialogue  key={key} Questions={ele.Question} Catogries={ele.Category} totalVotes={ele.voter_ids.length}/>
             })
         }
-         {  page==="home"? handelScroll():console.log("not home Screen")}
+         {/* {  page==="home"? handelScroll():console.log("not home Screen")} */}
     </div>
   )
 }
