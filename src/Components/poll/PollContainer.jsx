@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Polldialogue from './Polldialogue'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
 function PollContainer() {
 
+    // const [polls,setPolls] = useState({
+    //     Question:"",
+    //     catogries:[],
+    //     totalVotes:0
+    // });
 
     const polls=[
         {
@@ -39,11 +44,22 @@ function PollContainer() {
         },
     ]
 
+    {/* WIP 
+      const getData= ()=>{
+        axios.post
+    }
+    */}
+  
+
 
     if(!localStorage.getItem("scrollPos"))
     {
         localStorage.setItem("scrollPos",0)
     }
+
+    useEffect(()=>{
+        getPolls();
+    },[]);
     
     window.onscroll=(e)=>{
         const scrollPos= localStorage.getItem("scrollPos");
@@ -65,6 +81,7 @@ function PollContainer() {
     <div className='PollContainer--Container'>
         {
             polls.map( (ele,key)=>{
+                console.log(ele.Question)
                 return <Polldialogue  key={key} Questions={ele.Question} Catogries={ele.catogries} totalVotes={ele.totalVotes}/>
             })
         }

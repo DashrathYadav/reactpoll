@@ -9,6 +9,7 @@ import MidSection from "./Components/MidSection"
 import Footer from "./Components/footer/Footer"
 import PollForm from "./Components/poll/pollForm"
 import SideBar from "./Components/header/SideBar"
+import PollingUi from "./Components/poll/PollingUi"
 
 function App() {
 
@@ -19,9 +20,8 @@ function App() {
   return (
     <div className="App">
       {loginStatus === true ? <Navbar /> : <LoginNavbar />}
-      <SideBar/>
-      {/* <MidSection /> */}
-      {/* <PollForm/> */}
+      <PollingUi/>
+
       <Footer/>
     </div>
   );

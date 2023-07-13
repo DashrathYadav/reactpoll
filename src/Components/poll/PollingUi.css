@@ -1,0 +1,56 @@
+.pollingUi--infoContainer {
+    display: flex;
+    font-size: larger;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgb(110, 95, 95);
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, .6);
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.pollingUi--optionContainer{
+    
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+    justify-content: flex-start;
+    background-color: rgb(110, 95, 95);
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, .6);
+    margin: 10px;
+    border-radius: 8px;
+
+}
+.pollingUi--insideOptionContainer{
+    display: flex;
+    font-size: large;
+    justify-content: flex-start;
+    background-color: white;
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, .6);
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.pollingUi--questionpollingUi--flex,.pollingUi--CategorypollingUi--flex,.pollingUi--totvotespollingUi--flex,.pollingUi--creatorpollingUi--flex {
+
+    padding: 5px;
+    margin: 5px;
+    padding-left: 10px;
+
+}
+
+.Polldialogue--flex {
+    display: flex;
+}
+
+.Polldialogue--span{
+    font-size: large;
+    font-family: cursive;
+
+}
+
+.Polldialogue--span-ans{
+    font-size: x-large;
+    font-family: cursive;
+
+}
