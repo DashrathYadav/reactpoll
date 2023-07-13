@@ -51,11 +51,11 @@ export default function PollingUi() {
   });
 
   const handlePolling = (event) => {
-    console.log(selectedItem);
+
     event.preventDefault();
     const data = {
       pollId: fetchPoll.pollid,
-      voter_Id: id,
+      voter_id: id,
       option: selectedItem,
     };
     console.log(data);
@@ -79,7 +79,6 @@ export default function PollingUi() {
         e.target.addEventListener("mouseover", (event) => {
           const x = event.pageX - btnEl.offsetLeft;
           const y = event.pageY - btnEl.offsetTop;
-
           btnEl.style.setProperty("--xPos", x + "px");
           btnEl.style.setProperty("--yPos", y + "px");
         });
