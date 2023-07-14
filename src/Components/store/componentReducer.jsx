@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+import { render } from "react-dom";
 //Dummy login data on dashrath mongoDb
 //Dashrath
 // 64ad04dca8cb4edcfc1484a2
@@ -8,7 +9,9 @@ const initialState={
     page:"landing",
     loginId:"64ad04dca8cb4edcfc1484a2",
     name:"rough",
-    scrollPos:0
+    scrollPos:0,
+    renderPollUI:false,
+    pollData:"",
 };
 
 const componentReducer= createReducer(initialState,{
@@ -29,7 +32,14 @@ const componentReducer= createReducer(initialState,{
     },
     setUserName:(state,payload)=>{
         state.name=payload.name;
-    }
+    },
+    setrenderPollUI :(state,payload)=>
+    {
+        console.log("payload.pollClickedData",payload.pollClickedData)
+        state.pollData=payload.pollClickedData
+        state.renderPollUI= !state.renderPollUI;
+    },
+       
 })
 
 export default componentReducer;

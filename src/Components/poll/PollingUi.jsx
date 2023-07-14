@@ -3,8 +3,9 @@ import "./PollingUi.css";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-export default function PollingUi() {
+export default function PollingUi({pollClickedData}) {
 
+  console.log("ui got data is",pollClickedData)
   const pid = { pid: "64aed4a1d229c8f9872c3e26" };
   {/* pid for testing will have to change */}
 
@@ -19,33 +20,33 @@ export default function PollingUi() {
   });
 
   const getData = () => {
-    axios
-      .post("http://localhost:3000/getPoll", pid, {
-        headers: { "Access-Control-Allow-Origin": "*" },
-      })
-      .then((response) => {
-        const got = response.data.poll;
+    // axios
+    //   .post("http://localhost:3000/getPoll", pid, {
+    //     headers: { "Access-Control-Allow-Origin": "*" },
+    //   })
+    //   .then((response) => {
+    //     const pollClickedData = response.data.poll;
 
         setFetchPoll({
-          category: got.Category,
-          question: got.Question,
-          creatorId: got.creatorId,
-          totalVotes: got.voter_ids.length,
-          pollid: got._id,
-          options: got.Options.map(option => (option.opt))
+          category: pollClickedData.Category,
+          question: pollClickedData.Question,
+          creatorId: pollClickedData.creatorId,
+          totalVotes: pollClickedData.voter_ids?.length,
+          pollid: pollClickedData._id,
+          options: pollClickedData.Options.map(option => (option.opt))
         });
         console.log(fetchPoll.options)
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+      // })
+      // .catch((error) => {
+      //   console.log(error.message);
+      // });
   };
   useEffect(() => {
     getData();
   }, []);
 
  
-
+//for sending response taking user id
   let id = useSelector((state) => {
     return state.component.loginId;
   });

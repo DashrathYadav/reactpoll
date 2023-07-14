@@ -2,53 +2,29 @@ import React, { useEffect, useState } from 'react'
 import Polldialogue from './Polldialogue'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import axios from 'axios'
+import PollingUi from './PollingUi'
 
 function PollContainer() {
 
-    // const [polls,setPolls] = useState({
-    //     Question:"",
-    //     catogries:[],
-    //     totalVotes:0
-    // });
+  const dispatch=useDispatch();
 
-    const polls=[
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-        {
-            Question:"This is big Question fsfdf fsdf  fsdf sfdfdf no 1",
-            catogries:['electronics','science','facts'],
-            totalVotes:30
-        },
-    ]
+    const [polls,setPolls] = useState([]);
 
-    {/* WIP 
-      const getData= ()=>{
-        axios.post
+      const getPolls= ()=>{
+        axios
+        .post("http://localhost:3000/getPolls", {
+            headers: { "Access-Control-Allow-Origin": "*" },
+          })
+          .then((response)=>{
+                setPolls(response.data.poll);
+               console.log("mydunp",response)
+
+          })
+          .catch((err)=>{
+            console.log(err)
+          })
     }
-    */}
   
 
 
@@ -58,18 +34,18 @@ function PollContainer() {
     }
 
     useEffect(()=>{
+      console.log("setstate called")
         getPolls();
     },[]);
     
     window.onscroll=(e)=>{
         const scrollPos= localStorage.getItem("scrollPos");
         localStorage.setItem("scrollPos",window.scrollY)
-        console.log(window.scrollY)
+        // console.log(window.scrollY)
     }
   
     const handelScroll=()=>{
         const scrollPos=localStorage.getItem("scrollPos")
-        // console.log("running handelScroll and scrollPos =",scrollPos);
         window.scrollTo(0,300)
     }
    let page = useSelector((state) => {
@@ -77,15 +53,39 @@ function PollContainer() {
     });
 
 
+    let pollUirenderState;
+    let pollData;
+
+    //handling on click listner
+    const onDialogClicked=(id)=>{
+        console.log("id clicked is ",id);
+      // later have to handel poll not find issue
+      const pollClickedData=polls.find((poll)=>{
+        return poll._id===id
+      })
+
+      console.log("pollfound",pollClickedData)
+        dispatch({
+          type:"setrenderPollUI",
+          pollClickedData:pollClickedData,
+        })
+    }
+
+     [pollUirenderState,pollData]= useSelector((state)=>{
+      return [state.component.renderPollUI,state.component.pollData]
+    })
+
   return (
     <div className='PollContainer--Container'>
         {
             polls.map( (ele,key)=>{
-                console.log(ele.Question)
-                return <Polldialogue  key={key} Questions={ele.Question} Catogries={ele.catogries} totalVotes={ele.totalVotes}/>
+                console.log(ele)
+                return <Polldialogue  key={key} id={ele._id} Questions={ele.Question} Catogries={ele.Category} totalVotes={ele.voter_ids.length}  onClickUi={onDialogClicked} />
             })
-        }
-         {  page==="home"? handelScroll():console.log("not home Screen")}
+          }
+
+            { pollUirenderState===true ? <PollingUi pollClickedData={pollData} />:""}
+
     </div>
   )
 }

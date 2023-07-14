@@ -1,8 +1,13 @@
 import React from "react";
 import "./Polldialogue.css";
-function Polldialogue({ Questions, Catogries, totalVotes }) {
+function Polldialogue({id,Questions, Catogries, totalVotes ,onClickUi}) {
+
+  const dialogClick =()=>{
+      onClickUi(id);
+  }
+
   return (
-    <div className="Polldialogue--Container ">
+    <div className="Polldialogue--Container " onClick={dialogClick}>
       <p className="Polldialogue--questionPolldialogue--flex" id="Question">
         <span className="Polldialogue--span">Question : </span><span className="Polldialogue--span-ans"> {Questions}</span>
       </p>
