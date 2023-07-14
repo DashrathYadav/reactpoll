@@ -4,3 +4,7 @@ notes:
 
 
 //Update:
+
+-->Dashrath.
+// Took id from clicked dialog ui , searched in array and passed to poll ui component to render
+//polling ui  is rendered on click now just have to palce it in center and make back ground blur.
