@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import LandingPage from "./LandingPage";
 import Login from "./user/Login";
 import SignUp from "./user/SignUp";
-import PollContainer from "./poll/PollContainer";
+import {PollContainer} from "./poll/PollContainer";
 import PollForm from "./poll/pollForm";
 
 function MidSection() {

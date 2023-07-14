@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import PollingUi from './PollingUi'
 
-function PollContainer() {
+let OnVote;
+const PollContainer = function () {
 
   const dispatch=useDispatch();
 
@@ -18,7 +19,6 @@ function PollContainer() {
           })
           .then((response)=>{
                 setPolls(response.data.poll);
-               console.log("mydunp",response)
 
           })
           .catch((err)=>{
@@ -26,9 +26,9 @@ function PollContainer() {
           })
     }
   
-    const  onVote=(msg)=>{
-      console("You have voted wait to sync response",msg)
-    getPolls();
+    OnVote=function(msg){
+      console.log(msg);
+      getPolls();
     }
 
 
@@ -68,7 +68,6 @@ function PollContainer() {
         return poll._id===id
       })
 
-      console.log("pollfound",pollClickedData)
         dispatch({
           type:"setrenderPollUI",
           pollClickedData:pollClickedData,
@@ -88,10 +87,10 @@ function PollContainer() {
             })
           }
 
-            { pollUirenderState===true ? <PollingUi pollClickedData={pollData} OnVote={onVote} />:""}
+            { pollUirenderState===true ? <PollingUi pollClickedData={pollData} />:""}
 
     </div>
   )
 }
 
-export default PollContainer
+export { PollContainer, OnVote}

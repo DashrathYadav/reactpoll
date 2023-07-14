@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./PollingUi.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import {OnVote} from "./PollContainer"
 import axios from "axios";
 
-export default function PollingUi({ pollClickedData }, OnVote) {
+export default function PollingUi({ pollClickedData }) {
   const dispatch = useDispatch();
-  console.log("ui got data is", pollClickedData);
-  const pid = { pid: "64aed4a1d229c8f9872c3e26" };
   {
     /* pid for testing will have to change */
   }
@@ -35,9 +34,8 @@ export default function PollingUi({ pollClickedData }, OnVote) {
       creatorId: pollClickedData.creatorId,
       totalVotes: pollClickedData.voter_ids?.length,
       pollid: pollClickedData._id,
-      options: pollClickedData.Options.map((option) => option.opt),
+      options: pollClickedData.Options.map(option => (option.text)),
     });
-    console.log(fetchPoll.options);
     // })
     // .catch((error) => {
     //   console.log(error.message);
@@ -66,17 +64,15 @@ export default function PollingUi({ pollClickedData }, OnVote) {
       })
       .then((response) => {
         console.log(response.status);
-
-        //rerendering homepage/pollContainer to reflect change
-        console.log(OnVote);
-        OnVote("onvote is Called");
+       
         dispatch({
           type: "setrenderPollUI",
           pollClickedData: "",
         });
+        OnVote("test");
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log("error");
       });
   };
 

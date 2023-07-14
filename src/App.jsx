@@ -10,7 +10,7 @@ import Footer from "./Components/footer/Footer"
 import PollForm from "./Components/poll/pollForm"
 // import SideBar from "./Components/header/SideBar"
 import PollingUi from "./Components/poll/PollingUi"
-import PollContainer from "./Components/poll/PollContainer"
+import {PollContainer} from "./Components/poll/PollContainer"
 
 function App() {
 
