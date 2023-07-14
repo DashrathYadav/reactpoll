@@ -20,6 +20,9 @@ function App() {
   return (
     <div className="App">
       {loginStatus === true ? <Navbar /> : <LoginNavbar />}
+      <SideBar/>
+      {/* <MidSection /> */}
+      {/* <PollForm/> */}
       <PollingUi/>
 
       <Footer/>
