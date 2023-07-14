@@ -2,6 +2,8 @@
     display: flex;
     background-color: green;
     overflow: scroll;
+    justify-content: center;
+    align-items: center;
 }
 
 .Polldialogue--question{

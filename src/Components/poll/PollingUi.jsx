@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./PollingUi.css";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 export default function PollingUi({pollClickedData}) {
 
+  const dispatch=useDispatch()
   console.log("ui got data is",pollClickedData)
   const pid = { pid: "64aed4a1d229c8f9872c3e26" };
   {/* pid for testing will have to change */}
@@ -96,8 +98,23 @@ export default function PollingUi({pollClickedData}) {
     setSelectedItem(index);
   };
 
+
+//handling closing
+  const handleClose=(e)=>{
+
+    dispatch({
+      type:"setrenderPollUI",
+      pollClickedData:"",
+    })
+
+
+  }
+
+
+
+
   return (
-    <div>
+    <div className="pollingcontainer">
       <div className="pollingUi--infoContainer">
         <p className="pollingUi--questionpollingUi--flex" id="Question">
           <span className="PollUi--span">Question : </span>
@@ -143,6 +160,7 @@ export default function PollingUi({pollClickedData}) {
       </div>
       {/* {submitBtn} */}
       <button onClick={handlePolling}>Submit</button>
+      <button onClick={handleClose}>Close</button>
     </div>
   );
 }
