@@ -5,6 +5,15 @@ notes:
 
 //Update:
 
+
+-->Dashrath
+// trying to add onVote function to make rerender the component to see updated data,but error.
+
+-->Dashrath
+// added closing functionality to PollUi
+
+
 -->Dashrath.
 // Took id from clicked dialog ui , searched in array and passed to poll ui component to render
 //polling ui  is rendered on click now just have to palce it in center and make back ground blur.
+

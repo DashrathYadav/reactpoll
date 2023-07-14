@@ -5,14 +5,12 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 function LoginNavbar() {
-  
   const dispatch = useDispatch();
-  
 
-  const userName= useSelector((state)=>{
+  //currently checking login status by name but later on change to loginStatus
+  const userName = useSelector((state) => {
     return state.component.name;
-  })
-
+  });
 
   const setPageLogin = (e) => {
     console.log("login clicked");
@@ -30,6 +28,13 @@ function LoginNavbar() {
     });
   };
 
+  const createPoll = (e) => {
+    dispatch({
+      type:"setPage",
+      page:"createNewPoll",
+    })
+  };
+
   return (
     <div>
       <nav className="Navbar--navbar">
@@ -38,12 +43,20 @@ function LoginNavbar() {
         </div>
         <div className="Navbar--list">
           {/* conditonal redering between name and login button*/}
-          
-          { userName ==="" ?<button className="Navbar--button" onClick={setPageLogin}>
-            Login
-          </button> : <li className="Navbar--button Navbar--li">{userName}</li>
-          }
-          
+
+          {userName === "" ? (
+            <button className="Navbar--button" onClick={setPageLogin}>
+              Login
+            </button>
+          ) : (
+            <>
+              <li className="Navbar--button Navbar--li">{userName}</li>
+              <button className="Navbar--button" onClick={createPoll}>
+                + New
+              </button>
+            </>
+          )}
+
           <button className="Navbar--button" onClick={setPageHome}>
             home
           </button>

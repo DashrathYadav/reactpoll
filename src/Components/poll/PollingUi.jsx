@@ -4,21 +4,21 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-export default function PollingUi({pollClickedData}) {
-
-  const dispatch=useDispatch()
-  console.log("ui got data is",pollClickedData)
+export default function PollingUi({ pollClickedData }, OnVote) {
+  const dispatch = useDispatch();
+  console.log("ui got data is", pollClickedData);
   const pid = { pid: "64aed4a1d229c8f9872c3e26" };
-  {/* pid for testing will have to change */}
+  {
+    /* pid for testing will have to change */
+  }
 
-  
   const [fetchPoll, setFetchPoll] = useState({
     category: [],
     question: "",
     creatorId: "",
     totalVotes: "",
     pollid: "",
-    options: []
+    options: [],
   });
 
   const getData = () => {
@@ -29,32 +29,30 @@ export default function PollingUi({pollClickedData}) {
     //   .then((response) => {
     //     const pollClickedData = response.data.poll;
 
-        setFetchPoll({
-          category: pollClickedData.Category,
-          question: pollClickedData.Question,
-          creatorId: pollClickedData.creatorId,
-          totalVotes: pollClickedData.voter_ids?.length,
-          pollid: pollClickedData._id,
-          options: pollClickedData.Options.map(option => (option.opt))
-        });
-        console.log(fetchPoll.options)
-      // })
-      // .catch((error) => {
-      //   console.log(error.message);
-      // });
+    setFetchPoll({
+      category: pollClickedData.Category,
+      question: pollClickedData.Question,
+      creatorId: pollClickedData.creatorId,
+      totalVotes: pollClickedData.voter_ids?.length,
+      pollid: pollClickedData._id,
+      options: pollClickedData.Options.map((option) => option.opt),
+    });
+    console.log(fetchPoll.options);
+    // })
+    // .catch((error) => {
+    //   console.log(error.message);
+    // });
   };
   useEffect(() => {
     getData();
   }, []);
 
- 
-//for sending response taking user id
+  //for sending response taking user id
   let id = useSelector((state) => {
     return state.component.loginId;
   });
 
   const handlePolling = (event) => {
-
     event.preventDefault();
     const data = {
       pollId: fetchPoll.pollid,
@@ -68,6 +66,14 @@ export default function PollingUi({pollClickedData}) {
       })
       .then((response) => {
         console.log(response.status);
+
+        //rerendering homepage/pollContainer to reflect change
+        console.log(OnVote);
+        OnVote("onvote is Called");
+        dispatch({
+          type: "setrenderPollUI",
+          pollClickedData: "",
+        });
       })
       .catch((error) => {
         console.log(error.message);
@@ -98,20 +104,13 @@ export default function PollingUi({pollClickedData}) {
     setSelectedItem(index);
   };
 
-
-//handling closing
-  const handleClose=(e)=>{
-
+  //handling closing
+  const handleClose = (e) => {
     dispatch({
-      type:"setrenderPollUI",
-      pollClickedData:"",
-    })
-
-
-  }
-
-
-
+      type: "setrenderPollUI",
+      pollClickedData: "",
+    });
+  };
 
   return (
     <div className="pollingcontainer">
@@ -153,7 +152,9 @@ export default function PollingUi({pollClickedData}) {
                 onChange={() => handleItemClick(index)}
                 value={index}
               />
-              <label htmlFor={`radio-${index}`}>{fetchPoll.options[index]}</label>
+              <label htmlFor={`radio-${index}`}>
+                {fetchPoll.options[index]}
+              </label>
             </div>
           );
         })}

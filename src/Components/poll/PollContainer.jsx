@@ -26,6 +26,10 @@ function PollContainer() {
           })
     }
   
+    const  onVote=(msg)=>{
+      console("You have voted wait to sync response",msg)
+    getPolls();
+    }
 
 
     if(!localStorage.getItem("scrollPos"))
@@ -84,7 +88,7 @@ function PollContainer() {
             })
           }
 
-            { pollUirenderState===true ? <PollingUi pollClickedData={pollData} />:""}
+            { pollUirenderState===true ? <PollingUi pollClickedData={pollData} OnVote={onVote} />:""}
 
     </div>
   )

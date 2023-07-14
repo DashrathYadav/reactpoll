@@ -3,12 +3,13 @@ import { render } from "react-dom";
 //Dummy login data on dashrath mongoDb
 //Dashrath
 // 64ad04dca8cb4edcfc1484a2
+//name rough
 
 const initialState={
     loginStatus:false,
     page:"landing",
-    loginId:"64ad04dca8cb4edcfc1484a2",
-    name:"rough",
+    loginId:"",
+    name:"",
     scrollPos:0,
     renderPollUI:false,
     pollData:"",

@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function PollForm() {
 
-
+  const dispatch=useDispatch();
   let id = useSelector((state) => {
     return state.component.loginId;
   });
@@ -55,6 +55,12 @@ export default function PollForm() {
       })
       .then((response) => {
         console.log(response.status);
+
+        //redirecting to home page after creation of poll
+        dispatch({
+          type:"setPage",
+          page:"home",
+        })
       })
       .catch((error) => {
         console.log(error.message);
