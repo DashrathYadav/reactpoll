@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./PollingUi.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+// import { onVote } from "./PollContainer";
 import axios from "axios";
 
-export default function PollingUi({ pollClickedData }, OnVote) {
+export default function PollingUi({ pollClickedData }) {
   const dispatch = useDispatch();
   console.log("ui got data is", pollClickedData);
   const pid = { pid: "64aed4a1d229c8f9872c3e26" };
@@ -68,8 +69,8 @@ export default function PollingUi({ pollClickedData }, OnVote) {
         console.log(response.status);
 
         //rerendering homepage/pollContainer to reflect change
-        console.log(OnVote);
-        OnVote("onvote is Called");
+        // console.log(onVote);
+        // OnVote("onvote is Called");
         dispatch({
           type: "setrenderPollUI",
           pollClickedData: "",

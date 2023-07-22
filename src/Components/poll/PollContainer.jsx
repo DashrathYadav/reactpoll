@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import PollingUi from './PollingUi'
-
-function PollContainer() {
+let onVote;
+     function PollContainer() {
 
   const dispatch=useDispatch();
 
@@ -26,7 +26,7 @@ function PollContainer() {
           })
     }
   
-    const  onVote=(msg)=>{
+      onVote=(msg)=>{
       console("You have voted wait to sync response",msg)
     getPolls();
     }
@@ -93,5 +93,4 @@ function PollContainer() {
     </div>
   )
 }
-
-export default PollContainer
+export default PollContainer;
