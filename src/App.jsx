@@ -13,6 +13,8 @@ import PollingUi from "./Components/poll/PollingUi"
 import {PollContainer} from "./Components/poll/PollContainer"
 import Analytics from "./Components/Analytics/Analytics"
 
+import { Attribute } from "./Components/Attribute"
+
 function App() {
 
   let loginStatus = useSelector((state) => {
@@ -22,6 +24,10 @@ function App() {
   return (
     <div className="App">
       {loginStatus === true ? <Navbar /> : <LoginNavbar />}
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <MidSection/>
       <Analytics/>
       <Footer/>

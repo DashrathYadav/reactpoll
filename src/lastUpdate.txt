@@ -5,6 +5,9 @@ notes:
 
 //Update:
 
+-->Dashrath(24-july)
+//Intrigted Slider UI, 
+
 -->Vishal
 // Fixed rerendering of the component to see updated data
 

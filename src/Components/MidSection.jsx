@@ -7,6 +7,7 @@ import Login from "./user/Login";
 import SignUp from "./user/SignUp";
 import {PollContainer} from "./poll/PollContainer";
 import PollForm from "./poll/pollForm";
+import { About } from "./About";
 
 function MidSection() {
 
@@ -33,8 +34,12 @@ function MidSection() {
   else if(page==="signup"){
     midSection= <SignUp/>
   }
-  else if(page=="createNewPoll"){
+  else if(page==="createNewPoll"){
     midSection=<PollForm/>
+  }
+  else if(page=== "about")
+  {
+    midSection=<About/>
   }
   
 

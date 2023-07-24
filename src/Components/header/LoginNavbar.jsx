@@ -12,28 +12,19 @@ function LoginNavbar() {
     return state.component.name;
   });
 
-  const setPageLogin = (e) => {
-    console.log("login clicked");
-    dispatch({
-      type: "setPage",
-      page: "login",
-    });
-  };
 
-  const setPageHome = (e) => {
-    console.log("login clicked");
-    dispatch({
-      type: "setPage",
-      page: "home",
-    });
-  };
 
-  const createPoll = (e) => {
+  const setPage =(e)=>{
+    
+    const type= e.target.attributes.getNamedItem('action').value;
+    const page= e.target.attributes.getNamedItem('page').value;
+    // console.log(type);
+    // console.log(page);
     dispatch({
-      type:"setPage",
-      page:"createNewPoll",
+      type:type,
+      page:page,
     })
-  };
+  }
 
   return (
     <div>
@@ -45,23 +36,23 @@ function LoginNavbar() {
           {/* conditonal redering between name and login button*/}
 
           {userName === "" ? (
-            <button className="Navbar--button" onClick={setPageLogin}>
+            <button className="Navbar--button" page="login" action="setPage" onClick={setPage}>
               Login
             </button>
           ) : (
             <>
               <li className="Navbar--button Navbar--li">{userName}</li>
-              <button className="Navbar--button" onClick={createPoll}>
+              <button className="Navbar--button"  page="createNewPoll" action="setPage" onClick={setPage}>
                 + New
               </button>
             </>
           )}
 
-          <button className="Navbar--button" onClick={setPageHome}>
+          <button className="Navbar--button" page="home" action="setPage" onClick={setPage}>
             home
           </button>
-          <button className="Navbar--button">About</button>
-          <button className="Navbar--button">Contact</button>
+          <button className="Navbar--button"  page="about" action="setPage" onClick={setPage} >About</button>
+          <button className="Navbar--button"   page="contact" action="setPage" onClick={setPage}   >Contact</button>
         </div>
       </nav>
     </div>

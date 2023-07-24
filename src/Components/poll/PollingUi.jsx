@@ -64,7 +64,6 @@ export default function PollingUi({ pollClickedData }) {
       })
       .then((response) => {
         console.log(response.status);
-       
         dispatch({
           type: "setrenderPollUI",
           pollClickedData: "",
