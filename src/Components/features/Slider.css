@@ -1,0 +1,113 @@
+/*  two file  Slider.jsx, SliderItem.jsx */
+.Slider--hamburger{
+ 
+    color: black;
+    align-items: center;
+    justify-content: center;
+    /* top: 50%; */
+    position: absolute;
+    margin-top: 80px;
+    left:85%;
+    height: 45px;
+    width: 35px;
+    padding-left: 20px;
+    border-radius: 50%;
+    font-size: 40px;
+    text-decoration:solid;
+    color:orangered;
+    background-color:white;
+    border: 2px solid orangered;
+    cursor: pointer;
+    /* width: 50px; */
+    /* height: 100px; */
+}
+
+.Slider--hamburger:active{
+    background-color: red;
+}
+
+.Slider{
+    /* margin-right: 5px;  */
+    /* padding: 10px;    */
+    width: 200px;
+    display: flex;
+        flex-direction: row-reverse;
+        position: absolute;
+        left: 0;
+        /* top: 10%; */
+        bottom: 0;
+        transition: all .5s;
+        height: 100%;
+    background-color: white;
+    justify-content: center;
+    border: 1px solid black;
+    position: fixed;
+}
+
+.Slider--items{
+   display: flex;
+   flex-direction: column;
+
+   align-items: center;
+
+    margin-top: 100px;
+    top: 100%;
+
+ 
+
+}
+
+
+.Slider--div{
+    
+    padding: 25px 25px;
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px  rgba(255, 69, 0) ;
+    border-radius: 50%;
+    transition: all .7s;
+    margin-bottom: 20px;
+    cursor: pointer;
+    
+}
+
+.Slider--div >h3{
+
+    padding: 0;
+    margin: 0;
+
+}
+
+.Slider--icon{
+
+    width:40px;
+    margin: 0;
+    padding: 0;
+    /* display: block; */
+}
+
+.Slider--div:hover{
+    background-color: rgba(255, 69, 0,0.9);
+    color: white;
+
+}
+
+.Slider--hidden{
+    display: none;
+}
+
+.Slider--slide{
+    width: 0px;
+}
+.Slider--hamburger--adjust{
+    /* border: none; */
+    transform: scale(-1);
+    border: 2px ;
+    font-size: 50px;
+    /* background-color: transparent; */
+
+}

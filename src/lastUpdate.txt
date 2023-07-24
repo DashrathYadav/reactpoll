@@ -5,9 +5,19 @@ notes:
 
 //Update:
 
+-->Dashrath(24-july)
+//Intrigted Slider UI, 
+
+-->Vishal
+// Fixed rerendering of the component to see updated data
+
+-->Vishal
+// Fixed options text
+
 
 -->Dashrath
 // trying to add onVote function to make rerender the component to see updated data,but error.
+
 
 -->Dashrath
 // added closing functionality to PollUi

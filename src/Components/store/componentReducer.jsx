@@ -4,12 +4,13 @@ import { render } from "react-dom";
 //Dashrath
 // 64ad04dca8cb4edcfc1484a2
 //name rough
+//loginStatus:true
 
 const initialState={
     loginStatus:false,
     page:"landing",
-    loginId:"",
-    name:"",
+    loginId:"64ad04dca8cb4edcfc1484a2",
+    name:"Dashrath",
     scrollPos:0,
     renderPollUI:false,
     pollData:"",
