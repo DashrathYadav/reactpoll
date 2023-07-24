@@ -76,6 +76,13 @@ export default function PollingUi({ pollClickedData }) {
       });
   };
 
+  const handleVisulize = ()=>{
+    dispatch({
+      type:"setVisualizeUI",
+      pollClickedData:pollClickedData,
+    })
+  }
+
   const submitBtn = (
     <a
       className="btn SignUp--lessMargine"
@@ -158,6 +165,7 @@ export default function PollingUi({ pollClickedData }) {
       {/* {submitBtn} */}
       <button onClick={handlePolling}>Submit</button>
       <button onClick={handleClose}>Close</button>
+      <button onClick={handleVisulize}>Visulize</button>
     </div>
   );
 }

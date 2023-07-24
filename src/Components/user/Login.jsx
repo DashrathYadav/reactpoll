@@ -19,6 +19,7 @@ function Login() {
       [event.target.name]:event.target.value,
     }));
   };
+  const [errorMessage, setErrorMessage] = useState("");
   const handleSignIn = (event) => {
     event.preventDefault();
     const data = {
@@ -55,6 +56,11 @@ function Login() {
       })
       .catch((error) => {
         console.log(error);
+        if (error.response && error.response.status === 500) {
+          setErrorMessage("Wrong password. Please try again."); // Set the error message
+        } else {
+          setErrorMessage("An error occurred. Please try again later."); // Other error handling if needed
+        }
       });
   };
 
@@ -111,6 +117,7 @@ function Login() {
         <li>
           Not have Accoutnt? <u onClick={setPageSignup}> <span className="Login--signup-span">sign up</span></u>
         </li>
+        {errorMessage && <div className="Login--error-message">{errorMessage}</div>}
       </div>
     </div>
   );

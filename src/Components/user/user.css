@@ -91,6 +91,9 @@
   -webkit-transition-duration: 0.4s;
 
 }
+.Login--error-message{
+  color: red;
+}
 .Login--signup-span:hover{
   color: blue;
   top: 1px;

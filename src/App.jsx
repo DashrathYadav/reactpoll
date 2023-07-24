@@ -11,6 +11,7 @@ import PollForm from "./Components/poll/pollForm"
 // import SideBar from "./Components/header/SideBar"
 import PollingUi from "./Components/poll/PollingUi"
 import {PollContainer} from "./Components/poll/PollContainer"
+import Analytics from "./Components/Analytics/Analytics"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
     <div className="App">
       {loginStatus === true ? <Navbar /> : <LoginNavbar />}
       <MidSection/>
+      <Analytics/>
       <Footer/>
     </div>
   );

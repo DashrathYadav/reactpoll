@@ -40,6 +40,11 @@ const componentReducer= createReducer(initialState,{
         state.pollData=payload.pollClickedData
         state.renderPollUI= !state.renderPollUI;
     },
+    setVisualizeUI :(state,payload)=>{
+        console.log("Visulize clicked")
+        state.pollData = payload.pollClickedData
+        state.renderVisualizeUI = state.renderVisualizeUI;
+    }
        
 })
 
