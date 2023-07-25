@@ -5,14 +5,43 @@
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top:20px;
+    /* position: fixed; */
+    /* top:20px; */
     background-color: rgb(255, 255, 255,0.7);
 
 
 
 }
+
+.pollUIContainer{
+
+    position: fixed;
+      top:20%;
+      padding: 10px;
+      background-color: yellow;
+
+}
+
+
+
+.pollUI--split{
+    /* background-color: red; */
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+}
+
+.pollUI--graphContainer{
+    /* display: flex; */
+    border: 1px solid black;
+display: flex;
+justify-content: center;
+align-items: center;    
+    /* width: 500px; */
+    /* height: 500px; */
+}
+
+
 .pollingUi--infoContainer {
     
 
@@ -75,3 +104,6 @@
     font-family: cursive;
 
 }
+
+
+
