@@ -29,7 +29,7 @@ export default function PollingUi({ pollClickedData }) {
     //     const pollClickedData = response.data.poll;
 
     setFetchPoll({
-      category: pollClickedData.Category,
+      category: pollClickedData.Category.SubCategories,
       question: pollClickedData.Question,
       creatorId: pollClickedData.creatorId,
       totalVotes: pollClickedData.voter_ids?.length,
@@ -126,7 +126,7 @@ export default function PollingUi({ pollClickedData }) {
           <span className="pollingUi--span-ans">
             {" "}
             {fetchPoll.category?.map((ele) => {
-              return ele + "  ";
+              return ele.text + "  ";
             })}
           </span>
         </p>

@@ -29,7 +29,7 @@ function App() {
       <br></br>
       <br></br>
       <MidSection/>
-      <Analytics/>
+      
       <Footer/>
     </div>
   );

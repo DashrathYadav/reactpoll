@@ -9,8 +9,8 @@ import { render } from "react-dom";
 const initialState={
     loginStatus:false,
     page:"landing",
-    loginId:"64ad04dca8cb4edcfc1484a2",
-    name:"Dashrath",
+    loginId:"",
+    name:"",
     scrollPos:0,
     renderPollUI:false,
     pollData:"",

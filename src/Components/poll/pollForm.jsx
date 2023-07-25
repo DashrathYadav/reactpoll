@@ -15,7 +15,8 @@ export default function PollForm() {
   const [formData, setFormData] = useState({
     question: "",
     options: [{ text: "", count: 0 }],
-    categories: [""],
+    category: {text:"",count:0},
+    subcategories: [], // Array to store subcategories
   });
 
   const handleInputChange = (e) => {
@@ -33,19 +34,31 @@ export default function PollForm() {
     }));
   };
 
-  const handleAddCategory = () => {
+  const handleMainCategory = (e) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      categories: [...prevFormData.categories, ""]
+      category: { text: e.target.value, count: 0 }
     }));
   };
 
+  const handleAddCategory = () => {
+    if (formData.category) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        subcategories: [...prevFormData.subcategories, {text:"",count:0}],
+      }));
+    }
+  };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = {
       Question: formData.question,
       Options: formData.options,
-      Category: formData.categories,
+      Category: {
+        MainCategory: formData.category,
+        SubCategories: formData.subcategories,
+      },
       creatorId: id,
     };
     console.log(data)
@@ -66,6 +79,24 @@ export default function PollForm() {
         console.log(error.message);
       });
   };
+
+  const categories = [
+    "Politics and Government",
+    "Technology and Gadgets",
+    "Entertainment",
+    "Sports and Fitness",
+    "Food and Cuisine",
+    "Travel and Destinations",
+    "Environmental Issues",
+    "Health and Wellness",
+    "Education and Learning",
+    "Social Issues",
+    "Business and Economy",
+    "Science and Technology",
+    "Fashion and Style",
+    "Art and Creativity",
+    "Relationships and Dating"
+  ];
 
   const submitBtn = (
     <a
@@ -125,20 +156,34 @@ export default function PollForm() {
 
         <br />
         {/* Categories */}
+  
         <div className="pollForm--categories">
-          {formData.categories.map((category, index) => (
+          <select
+            id="categoryDropdown"
+            onChange={handleMainCategory}
+            name="category"
+            value={formData.category.text}
+          >
+            <option value="">Select a Category</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          {formData.subcategories.map((subcategory, index) => (
             <input
               key={index}
               type="text"
-              name={`category-${index}`}
-              placeholder={`Category ${index + 1}`}
-              value={category}
+              name={`subcategory-${index}`}
+              placeholder={`Subcategory ${index + 1}`}
+              value={subcategory.text}
               onChange={(e) => {
-                const newCategories = [...formData.categories];
-                newCategories[index] = e.target.value;
+                const newSubcategories = [...formData.subcategories];
+                newSubcategories[index].text = e.target.value;
                 setFormData((prevFormData) => ({
                   ...prevFormData,
-                  categories: newCategories
+                  subcategories: newSubcategories,
                 }));
               }}
             />

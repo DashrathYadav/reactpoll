@@ -90,7 +90,7 @@ const PollContainer = function () {
               key={key}
               id={ele._id}
               Questions={ele.Question}
-              Catogries={ele.Category}
+              Catogries={ele.Category.SubCategories}
               totalVotes={ele.voter_ids.length}
               onClickUi={onDialogClicked}
             />
