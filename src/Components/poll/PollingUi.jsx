@@ -126,7 +126,7 @@ export default function PollingUi({ pollClickedData }) {
           <span className="pollingUi--span-ans">
             {" "}
             {fetchPoll.category?.map((ele) => {
-              return ele.text + "  ";
+              return ele + "  ";
             })}
           </span>
         </p>

@@ -2,8 +2,13 @@ notes:
 
 //Your last commit discription and what add  describe here.
 
+//Update:
+-->Vishal(25-July)
+// adding categories schema 
 
 //Update:
+-->Vishal(24-july)
+//support for analytics
 
 -->Dashrath(24-july)
 //Intrigted Slider UI, 

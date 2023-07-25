@@ -15,7 +15,7 @@ export default function PollForm() {
   const [formData, setFormData] = useState({
     question: "",
     options: [{ text: "", count: 0 }],
-    category: {text:"",count:0},
+    category: "",
     subcategories: [], // Array to store subcategories
   });
 
@@ -34,18 +34,11 @@ export default function PollForm() {
     }));
   };
 
-  const handleMainCategory = (e) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      category: { text: e.target.value, count: 0 }
-    }));
-  };
-
   const handleAddCategory = () => {
     if (formData.category) {
       setFormData((prevFormData) => ({
         ...prevFormData,
-        subcategories: [...prevFormData.subcategories, {text:"",count:0}],
+        subcategories: [...prevFormData.subcategories, ""],
       }));
     }
   };
@@ -160,9 +153,9 @@ export default function PollForm() {
         <div className="pollForm--categories">
           <select
             id="categoryDropdown"
-            onChange={handleMainCategory}
+            onChange={handleInputChange}
             name="category"
-            value={formData.category.text}
+            value={formData.category}
           >
             <option value="">Select a Category</option>
             {categories.map((category, index) => (
@@ -177,10 +170,10 @@ export default function PollForm() {
               type="text"
               name={`subcategory-${index}`}
               placeholder={`Subcategory ${index + 1}`}
-              value={subcategory.text}
+              value={subcategory}
               onChange={(e) => {
                 const newSubcategories = [...formData.subcategories];
-                newSubcategories[index].text = e.target.value;
+                newSubcategories[index] = e.target.value;
                 setFormData((prevFormData) => ({
                   ...prevFormData,
                   subcategories: newSubcategories,
