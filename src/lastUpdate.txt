@@ -1,5 +1,4 @@
 notes:
-
 //Your last commit discription and what add  describe here.
 
 //Update:
@@ -9,6 +8,9 @@ notes:
 //Update:
 -->Vishal(24-july)
 //support for analytics
+
+-->Dahrath (25-july)
+//bar chart implement in pollUI.
 
 -->Dashrath(24-july)
 //Intrigted Slider UI, 
