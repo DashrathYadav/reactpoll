@@ -12,6 +12,7 @@ import PollForm from "./Components/poll/pollForm"
 import PollingUi from "./Components/poll/PollingUi"
 import {PollContainer} from "./Components/poll/PollContainer"
 import { Attribute } from "./Components/Attribute"
+import { Barchart } from "./Components/charts/Barchart"
 
 function App() {
 

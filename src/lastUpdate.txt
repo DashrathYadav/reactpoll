@@ -1,9 +1,11 @@
 notes:
-
 //Your last commit discription and what add  describe here.
 
 
 //Update:
+
+-->Dahrath (25-july)
+//bar chart implement in pollUI.
 
 -->Dashrath(24-july)
 //Intrigted Slider UI, 

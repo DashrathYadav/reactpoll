@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./PollingUi.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {OnVote} from "./PollContainer"
+import { OnVote } from "./PollContainer";
 import axios from "axios";
+import { Barchart } from "../charts/Barchart";
 
 export default function PollingUi({ pollClickedData }) {
   const dispatch = useDispatch();
   {
     /* pid for testing will have to change */
   }
+  console.log("poll clicked data ", pollClickedData);
 
   const [fetchPoll, setFetchPoll] = useState({
     category: [],
@@ -34,7 +36,7 @@ export default function PollingUi({ pollClickedData }) {
       creatorId: pollClickedData.creatorId,
       totalVotes: pollClickedData.voter_ids?.length,
       pollid: pollClickedData._id,
-      options: pollClickedData.Options.map(option => (option.text)),
+      options: pollClickedData.Options.map((option) => option.text),
     });
     // })
     // .catch((error) => {
@@ -109,54 +111,72 @@ export default function PollingUi({ pollClickedData }) {
 
   return (
     <div className="pollingcontainer">
-      <div className="pollingUi--infoContainer">
-        <p className="pollingUi--questionpollingUi--flex" id="Question">
-          <span className="PollUi--span">Question : </span>
-          <span className="pollingUi--span-ans"> {fetchPoll.question}</span>
-        </p>
-        <p className="pollingUi--CategorypollingUi--flex" id="category">
-          <span className="pollingUi--span">category :</span>
-          <span className="pollingUi--span-ans">
-            {" "}
-            {fetchPoll.category?.map((ele) => {
-              return ele + "  ";
-            })}
-          </span>
-        </p>
-        <p className="pollingUi--totvotespollingUi--flex">
-          <span className="pollingUi--span">Total-Votes :</span>{" "}
-          <span className="pollingUi--span-ans"> {fetchPoll.totalVotes}</span>
-        </p>
-        <p className="pollingUi--creatorpollingUi--flex">
-          <span className="pollingUi--span">Creator ID :</span>{" "}
-          <span className="pollingUi--span-ans"> {fetchPoll.creatorId}</span>
-        </p>
-      </div>
-
-      <div className="pollingUi--optionContainer">
-        {" "}
-        <span className="pollingUi--span">Option :</span>
-        {fetchPoll.options.map((option, index) => {
-          return (
-            <div key={index} className="pollingUi--insideOptionContainer">
-              <input
-                type="radio"
-                id={`radio-${index}`}
-                name="radio-group"
-                checked={selectedItem === index}
-                onChange={() => handleItemClick(index)}
-                value={index}
-              />
-              <label htmlFor={`radio-${index}`}>
-                {fetchPoll.options[index]}
-              </label>
+      <div className="pollUIContainer">
+        <div className="pollUI--split">
+          <div className="pollUI--data">
+            <div className="pollingUi--infoContainer">
+              <p className="pollingUi--questionpollingUi--flex" id="Question">
+                <span className="PollUi--span">Question : </span>
+                <span className="pollingUi--span-ans">
+                  {" "}
+                  {fetchPoll.question}
+                </span>
+              </p>
+              <p className="pollingUi--CategorypollingUi--flex" id="category">
+                <span className="pollingUi--span">category :</span>
+                <span className="pollingUi--span-ans">
+                  {fetchPoll.category?.map((ele) => {
+                    return ele + "  ";
+                  })}
+                </span>
+              </p>
+              <p className="pollingUi--totvotespollingUi--flex">
+                <span className="pollingUi--span">Total-Votes :</span>{" "}
+                <span className="pollingUi--span-ans">
+                  {" "}
+                  {fetchPoll.totalVotes}
+                </span>
+              </p>
+              <p className="pollingUi--creatorpollingUi--flex">
+                <span className="pollingUi--span">Creator ID :</span>{" "}
+                <span className="pollingUi--span-ans">
+                  {" "}
+                  {fetchPoll.creatorId}
+                </span>
+              </p>
             </div>
-          );
-        })}
+
+            <div className="pollingUi--optionContainer">
+              <span className="pollingUi--span">Option :</span>
+              {fetchPoll.options.map((option, index) => {
+                return (
+                  <div key={index} className="pollingUi--insideOptionContainer">
+                    <input
+                      type="radio"
+                      id={`radio-${index}`}
+                      name="radio-group"
+                      checked={selectedItem === index}
+                      onChange={() => handleItemClick(index)}
+                      value={index}
+                    />
+                    <label htmlFor={`radio-${index}`}>
+                      {fetchPoll.options[index]}
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          {/* graph area */}
+          <div className="pollUI--graphContainer">
+            <Barchart data={pollClickedData.Options} />
+          </div>
+        </div>
+
+        {/* {submitBtn} */}
+        <button onClick={handlePolling}>Submit</button>
+        <button onClick={handleClose}>Close</button>
       </div>
-      {/* {submitBtn} */}
-      <button onClick={handlePolling}>Submit</button>
-      <button onClick={handleClose}>Close</button>
     </div>
   );
 }
