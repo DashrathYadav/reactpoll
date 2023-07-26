@@ -1,48 +1,60 @@
 import {React,useEffect, useState} from 'react'
 import axios from 'axios';
+import './Analytics.css'
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis
+} from "recharts";
 
 export default function Analytics() {
 
-  
+  const [mainCategoryData, setMainCategoryData] = useState([]);
 
-  const [polls,setPolls] = useState([]);
+const getCategories = () => {
+  axios
+    .get("http://localhost:3000/getCategories")
+    .then(function (response) {
 
-  const [categories,setCategories] = useState({});
-
-  const getPolls= ()=>{
-    axios
-    .post("http://localhost:3000/getPolls", {
-        headers: { "Access-Control-Allow-Origin": "*" },
-      })
-      .then((response)=>{
-            setPolls(response.data.poll);
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
-  }
-
-  useEffect(() => {
-    getPolls();
-  }, []);
-  useEffect(() => {
-    const categoriesCount = {};
-
-    polls.forEach((poll) => {
-      const categoriesArray = poll.Category;
-      categoriesArray.forEach((category) => {
-        const categoryKey = category.toLowerCase();
-        categoriesCount[categoryKey] = (categoriesCount[categoryKey] || 0) + 1;
+      // Transform the response.data into the desired format
+      const transformedData = response.data.Categories.map((categoryData) => {
+        return {
+          subject: categoryData.MainCategory.name,
+          A: categoryData.MainCategory.pollCount,
+        };
       });
+
+      // Set the transformed data in the state
+      setMainCategoryData(transformedData);
     });
+};
 
-    setCategories(categoriesCount);
-  }, [polls]);
-
-  console.log(categories)
-
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   return (
-    <div>Analytics</div>
+    <RadarChart
+      className='chart'
+      cx={300}
+      cy={250}
+      outerRadius={150}
+      width={1000}
+      height={500}
+      data={mainCategoryData}
+    >
+      <PolarGrid />
+      <PolarAngleAxis dataKey="subject" />
+      <PolarRadiusAxis />
+      <Radar
+        name="MainCategory"
+        dataKey="A"
+        stroke="#8884d8"
+        fill="#8884d8"
+        fillOpacity={0.6}
+      />
+    </RadarChart>
   )
 }

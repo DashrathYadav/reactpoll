@@ -30,7 +30,6 @@ function App() {
       <br></br>
       <br></br>
       <MidSection/>
-      
       <Footer/>
     </div>
   );
