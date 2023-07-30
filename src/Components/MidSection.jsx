@@ -8,6 +8,7 @@ import SignUp from "./user/SignUp";
 import {PollContainer} from "./poll/PollContainer";
 import PollForm from "./poll/pollForm";
 import { About } from "./About";
+import Analytics from "./Analytics/Analytics"
 
 function MidSection() {
 
@@ -40,6 +41,9 @@ function MidSection() {
   else if(page=== "about")
   {
     midSection=<About/>
+  }
+  else if(page==='Analytics'){
+    midSection=<Analytics/>
   }
   
 

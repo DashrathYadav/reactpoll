@@ -8,6 +8,8 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis
 } from "recharts";
+import Radarchart from '../charts/Radarchart';
+import Piechart from '../charts/Piechart';
 
 export default function Analytics() {
 
@@ -34,27 +36,16 @@ const getCategories = () => {
   useEffect(() => {
     getCategories();
   }, []);
-
   return (
-    <RadarChart
-      className='chart'
-      cx={300}
-      cy={250}
-      outerRadius={150}
-      width={1000}
-      height={500}
-      data={mainCategoryData}
-    >
-      <PolarGrid />
-      <PolarAngleAxis dataKey="subject" />
-      <PolarRadiusAxis />
-      <Radar
-        name="MainCategory"
-        dataKey="A"
-        stroke="#8884d8"
-        fill="#8884d8"
-        fillOpacity={0.6}
-      />
-    </RadarChart>
+    <div className='Analytics-main'>
+      <div className='Analytics-radar'>
+      <Radarchart props={mainCategoryData}/>
+      </div>
+      <div className='Analytics-pie'>
+      <Piechart props = {mainCategoryData}/>
+      </div>
+      
+    </div>
+    
   )
 }

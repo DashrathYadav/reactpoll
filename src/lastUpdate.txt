@@ -2,6 +2,10 @@ notes:
 //Your last commit discription and what add  describe here.
 
 //Update:
+-->Vishal(27-July)
+// Added Visualization for categories
+
+//Update:
 -->Vishal(26July)
 // Fixed Vote Count Update in backend for categories
 

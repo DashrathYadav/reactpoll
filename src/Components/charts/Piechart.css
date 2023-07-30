@@ -1,0 +1,8 @@
+.Piechart{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+.Pie-head{
+    text-align: center;
+}
