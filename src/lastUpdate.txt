@@ -6,6 +6,14 @@ notes:
 sharing poll
 
 //Update:
+-->Vishal(27-July)
+// Added Visualization for categories
+
+//Update:
+-->Vishal(26July)
+// Fixed Vote Count Update in backend for categories
+
+//Update:
 -->Vishal(25-July)
 // adding categories schema 
 

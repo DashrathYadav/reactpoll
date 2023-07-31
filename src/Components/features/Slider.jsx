@@ -34,7 +34,7 @@ function Slider() {
         <h1 id="hamburger" className="Slider--hamburger Slider--hamburger--adjust" onClick={toggle}> <b> &#60; </b> </h1>
       <div id="SliderItem" className="Slider--items Slider--hidden">
         <SliderItems name={"Profile"} iconUrl={user}/>
-        <SliderItems name={"Analysis"} iconUrl={analysis}/>
+        <SliderItems name={"Analytics"} iconUrl={analysis}/>
         <SliderItems name={"Filter"} iconUrl={user}/>
         
       </div>

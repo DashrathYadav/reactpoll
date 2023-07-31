@@ -49,7 +49,6 @@ const dispatch =useDispatch();
       <br></br>
       <br></br>
       <MidSection/>
-      
       <Footer/>
     </div>
   );

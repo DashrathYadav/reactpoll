@@ -52,14 +52,10 @@ const componentReducer= createReducer(initialState,{
         else
         state.pollData=payload.pollClickedData
     },
-    setVisualizeUI :(state,payload)=>{
+    setAnalytics :(state,payload)=>{
         console.log("Visulize clicked")
         state.pollData = payload.pollClickedData
-        state.renderVisualizeUI = state.renderVisualizeUI;
-    },
-    setsharedPollStatus : (state,payload)=>{
-        console.log("state changed of sharedPoll")
-        state.sharedPollStatus=payload.value;
+        state.renderAnalytics = state.renderAnalytics;
     }
        
 })
