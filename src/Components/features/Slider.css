@@ -42,6 +42,7 @@
     justify-content: center;
     border: 1px solid black;
     position: fixed;
+    z-index: 1;
 }
 
 .Slider--items{

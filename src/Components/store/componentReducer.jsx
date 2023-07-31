@@ -14,6 +14,7 @@ const initialState={
     scrollPos:0,
     renderPollUI:false,
     pollData:"",
+    sharedPollStatus:false,
 };
 
 const componentReducer= createReducer(initialState,{
@@ -26,10 +27,17 @@ const componentReducer= createReducer(initialState,{
         state.loginStatus=true;
     },
     setlogout:(state,payload)=>{
+        state.loginId="";
         state.loginStatus=false;
+        state.page="landing";
+        state.name="";
+        state.pollData="";
+
     },
     setloginId:(state,payload)=>{
         state.loginId=payload._id;
+        state.loginStatus=true;
+        
         
     },
     setUserName:(state,payload)=>{
@@ -38,13 +46,20 @@ const componentReducer= createReducer(initialState,{
     setrenderPollUI :(state,payload)=>
     {
         console.log("payload.pollClickedData",payload.pollClickedData)
-        state.pollData=payload.pollClickedData
         state.renderPollUI= !state.renderPollUI;
+        if(state.renderPollUI===false)
+        state.pollData="";
+        else
+        state.pollData=payload.pollClickedData
     },
     setVisualizeUI :(state,payload)=>{
         console.log("Visulize clicked")
         state.pollData = payload.pollClickedData
         state.renderVisualizeUI = state.renderVisualizeUI;
+    },
+    setsharedPollStatus : (state,payload)=>{
+        console.log("state changed of sharedPoll")
+        state.sharedPollStatus=payload.value;
     }
        
 })

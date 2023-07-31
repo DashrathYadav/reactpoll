@@ -6,8 +6,11 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import SignUp from "./SignUp";
 
+
 function Login() {
   const dispatch = useDispatch();
+
+
   const [formData, setformData] = useState({
     email: "",
     password: "",
@@ -36,6 +39,16 @@ function Login() {
         console.log(response.status);
         if (response.status === 200) {
             console.log(response);
+
+            sessionStorage.setItem("loginStatus","true")
+            sessionStorage.setItem("loginId",response.data.result._id)
+            sessionStorage.setItem("userName",response.data.result.name)
+
+            if(sessionStorage.getItem("sharedPollId"))
+            {
+              location.reload();
+            }
+          
             dispatch({
                 type:"setloginId",
                 _id:response.data.result._id,
@@ -45,13 +58,11 @@ function Login() {
                 name:response.data.result.name,
             })
             dispatch({
-                type:"set"
-            })
-            dispatch({
                 type: "setPage",
                 page: "home",
               });
           console.log("success");
+          
         }
       })
       .catch((error) => {

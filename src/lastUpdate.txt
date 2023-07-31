@@ -1,6 +1,10 @@
 notes:
 //Your last commit discription and what add  describe here.
 
+// update:
+-->dashrath(31-july)
+sharing poll
+
 //Update:
 -->Vishal(25-July)
 // adding categories schema 

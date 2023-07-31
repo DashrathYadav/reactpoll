@@ -6,12 +6,21 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 function SignUp() {
     const dispatch= useDispatch();
+
+    const sharedPollStatus= useSelector((state)=>{
+      return state.component.sharedPollStatus;
+    })
+    console.log("shared Poll Status",sharedPollStatus);
+    
     
   const [formData, setformData] = useState({
     name: "",
     email: "",
     password: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setformData((prevData) => ({
@@ -50,12 +59,28 @@ function SignUp() {
                 page: "home",
               });
             
+             
 
           console.log("success");
+
+          if(sharedPollStatus)
+          {
+            console.log("current url of page ",window.location.href);
+            window.location.replace("/");
+          }
+
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
+
+        console.log(error);
+        if (error.response && error.response.status === 500) {
+          setErrorMessage("An error occurred. Please try again later."); // Set the error message
+        } else {
+          setErrorMessage(error.response.data.msg); // Other error handling if needed
+        }
+
       });
   };
 
@@ -85,6 +110,7 @@ function SignUp() {
             type="text"
             name="name"
             placeholder="Name"
+            required
             value={formData.name}
             onChange={handleInputChange}
           ></input>
@@ -92,6 +118,7 @@ function SignUp() {
           <input
             type="email"
             name="email"
+            required
             placeholder="Email"
             value={formData.email}
             onChange={handleInputChange}
@@ -102,9 +129,12 @@ function SignUp() {
             name="password"
             placeholder="Password"
             value={formData.password}
+            required
+            minLength={6}
             onChange={handleInputChange}
           ></input>
         </div>
+          {errorMessage && <div className="Login--error-message">{errorMessage}</div>}
         {loginBtn}
       </div>
     </>

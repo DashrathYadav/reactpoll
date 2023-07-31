@@ -8,10 +8,9 @@ import { Barchart } from "../charts/Barchart";
 
 export default function PollingUi({ pollClickedData }) {
   const dispatch = useDispatch();
-  {
-    /* pid for testing will have to change */
-  }
+
   console.log("poll clicked data ", pollClickedData);
+  console.log(pollClickedData.Category);
 
   const [fetchPoll, setFetchPoll] = useState({
     category: [],
@@ -23,20 +22,24 @@ export default function PollingUi({ pollClickedData }) {
   });
 
   const getData = () => {
+    console.log("getdata is called");
     // axios
     //   .post("http://localhost:3000/getPoll", pid, {
     //     headers: { "Access-Control-Allow-Origin": "*" },
     //   })
     //   .then((response) => {
-    //     const pollClickedData = response.data.poll;
+    // const pollClickedData = reosponse.data.poll;
 
-    setFetchPoll({
-      category: pollClickedData.Category.SubCategories,
-      question: pollClickedData.Question,
-      creatorId: pollClickedData.creatorId,
-      totalVotes: pollClickedData.voter_ids?.length,
-      pollid: pollClickedData._id,
-      options: pollClickedData.Options.map((option) => option.text),
+    setFetchPoll((prev) => {
+      console.log("setfetchpoll is called");
+      return {
+        category: pollClickedData?.Category?.SubCategories,
+        question: pollClickedData?.Question,
+        creatorId: pollClickedData?.creatorId,
+        totalVotes: pollClickedData?.voter_ids?.length,
+        pollid: pollClickedData?._id,
+        options: pollClickedData?.Options?.map((option) => option.text),
+      };
     });
     // })
     // .catch((error) => {
@@ -45,7 +48,7 @@ export default function PollingUi({ pollClickedData }) {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [pollClickedData]);
 
   //for sending response taking user id
   let id = useSelector((state) => {
@@ -65,7 +68,13 @@ export default function PollingUi({ pollClickedData }) {
         headers: { "Access-Control-Allow-Origin": "*" },
       })
       .then((response) => {
-        console.log(response.status);
+        console.log("polled successfully", response.status);
+
+        if (sessionStorage.getItem("sharedPollId")) {
+          sessionStorage.setItem("sharedPollId", "");
+          window.location.href = "/";
+        }
+
         dispatch({
           type: "setrenderPollUI",
           pollClickedData: "",
@@ -73,16 +82,18 @@ export default function PollingUi({ pollClickedData }) {
         OnVote("test");
       })
       .catch((error) => {
+        console.log(error);
+
         console.log("error");
       });
   };
 
-  const handleVisulize = ()=>{
+  const handleVisulize = () => {
     dispatch({
-      type:"setVisualizeUI",
-      pollClickedData:pollClickedData,
-    })
-  }
+      type: "setVisualizeUI",
+      pollClickedData: pollClickedData,
+    });
+  };
 
   const submitBtn = (
     <a
@@ -110,6 +121,11 @@ export default function PollingUi({ pollClickedData }) {
 
   //handling closing
   const handleClose = (e) => {
+    if (sessionStorage.getItem("sharedPollId")) {
+      sessionStorage.setItem("sharedPollId", "");
+      window.location.href = "/";
+    }
+
     dispatch({
       type: "setrenderPollUI",
       pollClickedData: "",
@@ -155,7 +171,7 @@ export default function PollingUi({ pollClickedData }) {
 
             <div className="pollingUi--optionContainer">
               <span className="pollingUi--span">Option :</span>
-              {fetchPoll.options.map((option, index) => {
+              {fetchPoll?.options?.map((option, index) => {
                 return (
                   <div key={index} className="pollingUi--insideOptionContainer">
                     <input
@@ -167,7 +183,7 @@ export default function PollingUi({ pollClickedData }) {
                       value={index}
                     />
                     <label htmlFor={`radio-${index}`}>
-                      {fetchPoll.options[index]}
+                      {fetchPoll?.options[index]}
                     </label>
                   </div>
                 );
@@ -176,7 +192,7 @@ export default function PollingUi({ pollClickedData }) {
           </div>
           {/* graph area */}
           <div className="pollUI--graphContainer">
-            <Barchart data={pollClickedData.Options} />
+            <Barchart data={pollClickedData?.Options} />
           </div>
         </div>
 
