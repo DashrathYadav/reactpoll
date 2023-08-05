@@ -6,8 +6,7 @@ import componentReducer from "./componentReducer.jsx"
 const store= configureStore({
     reducer:{
         component:componentReducer,
-        // pollData:pollDataReducer,
-      
+        // pollData:pollDataReducer,  
     }
 });
 

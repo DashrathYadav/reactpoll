@@ -8,6 +8,10 @@ function LoginNavbar() {
   const dispatch = useDispatch();
 
   //currently checking login status by name but later on change to loginStatus
+  const loginStatus = useSelector((state) => {
+    return state.component.loginStatus;
+  });
+
   const userName = useSelector((state) => {
     return state.component.name;
   });
@@ -18,8 +22,15 @@ function LoginNavbar() {
     
     const type= e.target.attributes.getNamedItem('action').value;
     const page= e.target.attributes.getNamedItem('page').value;
-    // console.log(type);
-    // console.log(page);
+
+    if(page==="logout")
+    {
+      sessionStorage.setItem("loginStatus",'false')
+      sessionStorage.setItem("loginId",'')
+      sessionStorage.setItem("userName",'')
+
+    }
+
     dispatch({
       type:type,
       page:page,
@@ -35,13 +46,16 @@ function LoginNavbar() {
         <div className="Navbar--list">
           {/* conditonal redering between name and login button*/}
 
-          {userName === "" ? (
+          {loginStatus === false ? (
             <button className="Navbar--button" page="login" action="setPage" onClick={setPage}>
               Login
             </button>
           ) : (
             <>
               <li className="Navbar--button Navbar--li">{userName}</li>
+              <button className="Navbar--button"  page="logout" action="setlogout" onClick={setPage}>
+                Logout
+              </button>
               <button className="Navbar--button"  page="createNewPoll" action="setPage" onClick={setPage}>
                 + New
               </button>

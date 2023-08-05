@@ -10,8 +10,8 @@ pollForm
 
 
 
-/*pln
 
-polling-UI
-appole
-*
+// 
+ error format msg in forms  res.status(--)send({msg:"---"});
+ password of size two was allowed because of doing hashing before passLength check.
+

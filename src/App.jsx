@@ -12,20 +12,39 @@ import PollForm from "./Components/poll/pollForm"
 import PollingUi from "./Components/poll/PollingUi"
 import {PollContainer} from "./Components/poll/PollContainer"
 import Analytics from "./Components/Analytics/Analytics"
-
 import { Attribute } from "./Components/Attribute"
 import { Barchart } from "./Components/charts/Barchart"
 import Contact from "./Components/Contact/Contact"
 
 function App() {
 
-  let loginStatus = useSelector((state) => {
-    return state.component.loginStatus;
-  });
+const dispatch =useDispatch();
+
+  function setUpLogin() {
+    dispatch({
+      type: "setloginId",
+      _id: sessionStorage.getItem("loginId"),
+    });
+    dispatch({
+      type: "setUserName",
+      name: sessionStorage.getItem("userName"),
+    });
+
+    dispatch({
+      type: "setPage",
+      page: "home",
+    });
+  }
+
+
+  if( sessionStorage.getItem("loginStatus")==="true")
+  {
+      setUpLogin();
+  }
 
   return (
     <div className="App">
-      {loginStatus === true ? <Navbar /> : <LoginNavbar />}
+      <LoginNavbar />
       <br></br>
       <br></br>
       <br></br>

@@ -39,7 +39,7 @@ const getCategories = () => {
   return (
     <div className='Analytics-main'>
       <div className='Analytics-radar'>
-      <Radarchart props={mainCategoryData}/>
+      <Radarchart props={mainCategoryData}/>cls
       </div>
       <div className='Analytics-pie'>
       <Piechart props = {mainCategoryData}/>
