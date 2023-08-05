@@ -7,7 +7,7 @@ import Login from "./user/Login";
 import SignUp from "./user/SignUp";
 import {PollContainer} from "./poll/PollContainer";
 import PollForm from "./poll/pollForm";
-import { About } from "./About";
+import About from "./About/About";
 import Analytics from "./Analytics/Analytics"
 import Contact from "./Contact/Contact";
 
@@ -33,6 +33,9 @@ function MidSection() {
   else if(page==="contact"){
     midSection = <><LandingPage/><Contact /></>
         
+  }
+  else if(page === "about"){
+    midSection =<About/>;
   }
   else if (page === "home") {
     midSection=<PollContainer/>

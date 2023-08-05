@@ -1,6 +1,10 @@
 notes:
 //Your last commit discription and what add  describe here.
 
+//Update:
+-->Vishal(05-Aug)
+//Adding Contact us page with About Us
+
 // update:
 -->dashrath(31-july)
 sharing poll
