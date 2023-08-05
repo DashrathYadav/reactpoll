@@ -9,6 +9,7 @@ import {PollContainer} from "./poll/PollContainer";
 import PollForm from "./poll/pollForm";
 import { About } from "./About";
 import Analytics from "./Analytics/Analytics"
+import Contact from "./Contact/Contact";
 
 function MidSection() {
 
@@ -28,7 +29,12 @@ function MidSection() {
     midSection = <LandingPage />;
   } else if (page === "login") {
     midSection = <Login />;
-  } else if (page === "home") {
+  } 
+  else if(page==="contact"){
+    midSection = <><LandingPage/><Contact /></>
+        
+  }
+  else if (page === "home") {
     midSection=<PollContainer/>
     console.log("home");
   }

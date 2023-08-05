@@ -15,6 +15,7 @@ import Analytics from "./Components/Analytics/Analytics"
 
 import { Attribute } from "./Components/Attribute"
 import { Barchart } from "./Components/charts/Barchart"
+import Contact from "./Components/Contact/Contact"
 
 function App() {
 

@@ -52,7 +52,7 @@ function LoginNavbar() {
             home
           </button>
           <button className="Navbar--button"  page="about" action="setPage" onClick={setPage} >About</button>
-          <button className="Navbar--button"   page="contact" action="setPage" onClick={setPage}   >Contact</button>
+          <button className="Navbar--button"   page="contact" action="setPage" onClick={setPage} >Contact</button>
         </div>
       </nav>
     </div>
