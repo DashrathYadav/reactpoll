@@ -28,6 +28,10 @@ const dispatch =useDispatch();
       type: "setUserName",
       name: sessionStorage.getItem("userName"),
     });
+    dispatch({
+      type:"SetProfileUrl",
+      profileUrl: sessionStorage.getItem("profileUrl"),
+    })
 
     dispatch({
       type: "setPage",

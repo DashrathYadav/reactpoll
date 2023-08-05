@@ -61,15 +61,15 @@ export const Barchart = ({data}) => {
     <div className="Barchart--container">
    <ResponsiveContainer width="100%" height="100%">
         <BarChart
-          width={500}
-          height={300}
+          width={300}
+          height={100}
           data={data}
-          // margin={{
-          //   top: 5,
-          //   right: 30,
-          //   left: 20,
-          //   bottom: 5,
-          // }}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="text" />

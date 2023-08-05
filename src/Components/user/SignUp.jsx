@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./user.css";
 import axios from "axios";
 import profile from "../../assets/profile.png";
@@ -13,6 +13,10 @@ function SignUp() {
     console.log("shared Poll Status",sharedPollStatus);
     
     
+    const [selectedFile, setSelectedFile] = useState();
+    const [preview, setPreview] = useState();
+
+
   const [formData, setformData] = useState({
     name: "",
     email: "",
@@ -30,22 +34,35 @@ function SignUp() {
   };
   const handleSignUp = (event) => {
     event.preventDefault();
+    const file= new FormData();
+     file.append("profileimage",selectedFile);
+      file.append("name",formData.name);
+      file.append("email",formData.email);
+      file.append("password",formData.password);
+
+
+     console.log(selectedFile);
+
     const data = {
       name: formData.name,
       email: formData.email,
       password: formData.password,
     };
+
+    
+
     axios
-      .post("http://localhost:3000/createUser", data, {
+      .post("http://localhost:3000/createUser",file,{
         headers: { "Access-Control-Allow-Origin": "*" },
       })
       .then((response) => {
+        console.log(response);
         console.log(response.status);
 
         //checking user signup and updating id and name in store
         if (response.status === 201) {
             console.log(response.data.result._id)
-
+            
             dispatch({
                 type:"setloginId",
                 _id:response.data.result._id,
@@ -54,6 +71,10 @@ function SignUp() {
                 type:"setUserName",
                 name:response.data.result.name,
             });
+            dispatch({
+              type:"SetProfileUrl",
+              profileUrl: response.data.result.profileUrl,
+            })
             dispatch({
                 type: "setPage",
                 page: "home",
@@ -97,14 +118,51 @@ function SignUp() {
             });
   }} onClick={handleSignUp}><span>Submit</span></a>;
 
+
+  // handling proflie select dialogbox trigger
+  const triggerImageSelect=(e) =>
+  {
+      document.getElementById("profileimage").click();
+  }
+
+
+  // handeling image selectd url;
+
+    // create a preview as a side effect, whenever selected file is changed
+    useEffect(() => {
+        if (!selectedFile) {
+            setPreview(undefined)
+            return
+        }
+
+        const objectUrl = URL.createObjectURL(selectedFile)
+        console.log("objectUrl =",objectUrl);
+        setPreview(objectUrl)
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [selectedFile])
+
+    const onSelectFile = e => {
+        if (!e.target.files || e.target.files.length === 0) {
+            setSelectedFile(undefined)
+            return
+        }
+
+        // I've kept this example simple by using the first image instead of multiple
+        setSelectedFile(e.target.files[0])
+    }
+
   return (
     <>
       <div className="MainContainer">
         <h1>Sign Up</h1>
         <div className="imagecontainer">
-          <img className="profile" src={profile} alt="profile image"></img>
+        <input type="file" name="profileimage" id="profileimage" onChange={onSelectFile} required />
+          <img className="profile" src={preview || profile} alt="profile image" onClick={triggerImageSelect} ></img>
           <h4 className="profiletext">Profile Picture</h4>
         </div>
+
         <div className="form">
           <input
             type="text"

@@ -1,6 +1,8 @@
 import React from "react";
 import user from "../../assets/user.png";
 import analysis from "../../assets/analysis.png";
+import { useDispatch } from "react-redux";
+import logo from "../../assets/logo.png";
 
 // import { GiHamburgerMenu } from "react-icons/fa";
 // import { MdOutlineCreateNewFolder } from "react-icons/fa";
@@ -9,6 +11,7 @@ import analysis from "../../assets/analysis.png";
 // import { SiGoogleanalytics } from 'react-icons/fa';
 import "./Slider.css";
 import { SliderItems } from "./SliderItems";
+import { useSelector } from 'react-redux'
 
 function Slider() {
 
@@ -29,13 +32,26 @@ function Slider() {
       }
   }
 
+  let profileUrl = useSelector((state) => {
+    return state.component.profileUrl;
+  });
+
+  const dispatch = useDispatch();
+  const handleClick = (e) => {
+    const type= e.target.attributes.getNamedItem('action').value;
+    dispatch({
+      type:type,
+      featureSection:"profile",
+    })
+  };
+
   return (
     <div id="Slider"  className="Slider Slider--slide">
-        <h1 id="hamburger" className="Slider--hamburger Slider--hamburger--adjust" onClick={toggle}> <b> &#60; </b> </h1>
+        <span id="hamburger" className="Slider--hamburger Slider--hamburger--adjust" onClick={toggle}> <b className="arrowSymbol"> &#60; </b> </span>
       <div id="SliderItem" className="Slider--items Slider--hidden">
-        <SliderItems name={"Profile"} iconUrl={user}/>
+       <img className="Slider--profilePic" src={profileUrl || user} alt="profile pic" width={100} action="setFeatureSection" onClick={handleClick} />
         <SliderItems name={"Analytics"} iconUrl={analysis}/>
-        <SliderItems name={"Filter"} iconUrl={user}/>
+        <SliderItems name={"polls"} iconUrl={logo}/>
         
       </div>
     </div>

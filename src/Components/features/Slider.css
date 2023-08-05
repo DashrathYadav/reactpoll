@@ -7,7 +7,7 @@
     /* top: 50%; */
     position: absolute;
     margin-top: 80px;
-    left:85%;
+    left:96%;
     height: 45px;
     width: 35px;
     padding-left: 20px;
@@ -20,6 +20,14 @@
     cursor: pointer;
     /* width: 50px; */
     /* height: 100px; */
+}
+
+.arrowSymbol{
+/* color: orange; */
+    position: relative;
+    right: 170%;
+    bottom: 30%;
+
 }
 
 .Slider--hamburger:active{
@@ -39,10 +47,11 @@
         transition: all .5s;
         height: 100%;
     background-color: white;
-    justify-content: center;
+    justify-content:center;
     border: 1px solid black;
     position: fixed;
-    z-index: 1;
+    z-index: 5;
+    align-items: center;
 }
 
 .Slider--items{
@@ -61,7 +70,7 @@
 
 .Slider--div{
     
-    padding: 25px 25px;
+    padding: 50px 50px;
     width: 45px;
     height: 45px;
     align-items: center;
@@ -73,6 +82,7 @@
     transition: all .7s;
     margin-bottom: 20px;
     cursor: pointer;
+    transition:linear;
     
 }
 
@@ -85,15 +95,15 @@
 
 .Slider--icon{
 
-    width:40px;
+    width:60px;
     margin: 0;
     padding: 0;
     /* display: block; */
 }
 
-.Slider--div:hover{
-    background-color: rgba(255, 69, 0,0.9);
-    color: white;
+.Slider--icon:hover{
+    
+    width: 70px;
 
 }
 
@@ -110,5 +120,16 @@
     border: 2px ;
     font-size: 50px;
     /* background-color: transparent; */
+
+}
+
+.Slider--profilePic{
+    cursor: pointer;
+    margin-bottom: 30px;
+    border-radius:10px;
+}
+.Slider--profilePic:hover{
+    
+    width: 110px;
 
 }
