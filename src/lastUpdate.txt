@@ -1,5 +1,8 @@
 notes:
 //Your last commit discription and what add  describe here.
+// update
+-->dashrath(5-july)
+user Profile and sharable url and ui modification
 
 // update:
 -->dashrath(31-july)
