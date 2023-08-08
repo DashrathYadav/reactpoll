@@ -4,6 +4,10 @@ notes:
 -->dashrath(5-july)
 user Profile and sharable url and ui modification
 
+//Update:
+-->Vishal(05-Aug)
+//Adding Contact us page with About Us
+
 // update:
 -->dashrath(31-july)
 sharing poll

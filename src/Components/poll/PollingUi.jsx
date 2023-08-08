@@ -159,7 +159,7 @@ export default function PollingUi({ pollClickedData }) {
   }
 
   function toastInvoke ( message,direction="top-right"){
-    toast('🦄 Sharing Url Copied Success!',{
+    toast(`🦄!${message}`,{
       position: direction,
       autoClose: 3000,
       hideProgressBar: false,
