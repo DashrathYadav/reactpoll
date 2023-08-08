@@ -17,7 +17,7 @@ const PollContainer = function () {
 
   const getPolls = () => {
     axios
-      .post("http://localhost:3000/getPolls", {
+      .post("https://reactpollbackend.onrender.com/getPolls", {
         headers: { "Access-Control-Allow-Origin": "*" },
       })
       .then((response) => {

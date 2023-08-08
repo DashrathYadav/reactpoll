@@ -17,7 +17,7 @@ export default function Analytics() {
 
 const getCategories = () => {
   axios
-    .get("http://localhost:3000/getCategories")
+    .get("https://reactpollbackend.onrender.com/getCategories")
     .then(function (response) {
 
       // Transform the response.data into the desired format
@@ -39,7 +39,7 @@ const getCategories = () => {
   return (
     <div className='Analytics-main'>
       <div className='Analytics-radar'>
-      <Radarchart props={mainCategoryData}/>cls
+      <Radarchart props={mainCategoryData}/>
       </div>
       <div className='Analytics-pie'>
       <Piechart props = {mainCategoryData}/>

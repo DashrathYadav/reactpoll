@@ -56,7 +56,7 @@ export const UnitPoll = () => {
       useEffect(() => {
 
         axios
-        .post("http://localhost:3000/getPoll",{pollId:pollId}, {
+        .post("https://reactpollbackend.onrender.com/getPoll",{pollId:pollId}, {
           headers: { "Access-Control-Allow-Origin": "*" },
         })
         .then((response) => {

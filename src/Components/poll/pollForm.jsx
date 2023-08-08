@@ -56,7 +56,7 @@ export default function PollForm() {
     };
     console.log(data)
     axios
-      .post("http://localhost:3000/createPoll", data, {
+      .post("https://reactpollbackend.onrender.com/createPoll", data, {
         headers: { "Access-Control-Allow-Origin": "*" }
       })
       .then((response) => {
@@ -166,6 +166,7 @@ export default function PollForm() {
           </select>
           {formData.subcategories.map((subcategory, index) => (
             <input
+              className="pollForm--subcategoryinput"
               key={index}
               type="text"
               name={`subcategory-${index}`}
@@ -181,6 +182,7 @@ export default function PollForm() {
               }}
             />
           ))}
+          <br/>
           <button type="button" onClick={handleAddCategory}>
             Add Category
           </button>

@@ -36,14 +36,14 @@ const Piechart = (props) => {
     <div>
         <h1 className='Pie-head'>PieChart for Main Category</h1>
          <div className='Piechart'>
-            <PieChart width={400} height={400} >
+            <PieChart width={400} height={500} >
             <Pie
                 data={data}
                 cx={200}
                 cy={200}
                 labelLine={false}
                 label={renderCustomizedLabel}
-                outerRadius={80}
+                outerRadius={150}
                 fill="#8884d8"
                 dataKey="value"
             >

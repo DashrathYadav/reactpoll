@@ -69,7 +69,7 @@ export default function PollingUi({ pollClickedData }) {
     };
     console.log(data);
     axios
-      .post("http://localhost:3000/submitPoll", data, {
+      .post("https://reactpollbackend.onrender.com/submitPoll", data, {
         headers: { "Access-Control-Allow-Origin": "*" },
       })
       .then((response) => {
@@ -152,7 +152,7 @@ export default function PollingUi({ pollClickedData }) {
 // handling  share and toast 
   const handleShare=(e)=>{
 
-    navigator.clipboard.writeText("http://localhost:5173/unitPoll/"+`${fetchPoll.pollid}`);
+    navigator.clipboard.writeText(`${windows.location.href}`+"/unitPoll/"+`${fetchPoll.pollid}`);
     console.log("url copied toas invoked")
     toastInvoke("Sharable Url Copied SuccessFully");
       

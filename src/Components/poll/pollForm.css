@@ -1,7 +1,6 @@
 .pollForm--MainContainer {
     display: flex;
     flex-direction: column;
-    background-color: rgb(198, 180, 180);
     border-radius: 8px;
     justify-content: center;
     align-items: center;
@@ -29,5 +28,8 @@
     font-family: montserrat;
     color: #2c3e50;
     font-size: 13px;
+  }
+  .pollForm--subcategoryinput{
+    margin: 10px 0px;
   }
   
