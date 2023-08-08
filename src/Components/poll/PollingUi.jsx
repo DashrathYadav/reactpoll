@@ -5,7 +5,12 @@ import { useDispatch } from "react-redux";
 import { OnVote } from "./PollContainer";
 import axios from "axios";
 import { Barchart } from "../charts/Barchart";
-
+import { default as Btn } from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
+import CloseBtn from "../Buttons/CloseBtn";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ShareBtn from "../Buttons/ShareBtn";
 export default function PollingUi({ pollClickedData }) {
   const dispatch = useDispatch();
 
@@ -70,22 +75,33 @@ export default function PollingUi({ pollClickedData }) {
       .then((response) => {
         console.log("polled successfully", response.status);
 
-        if (sessionStorage.getItem("sharedPollId")) {
-          sessionStorage.setItem("sharedPollId", "");
-          window.location.href = "/";
-        }
+        // on successVote invoking Toast
+        toastInvoke("Vote Submitted SuccessFully");
 
-        dispatch({
-          type: "setrenderPollUI",
-          pollClickedData: "",
+        setTimeout(()=>{
+
+          if (sessionStorage.getItem("sharedPollId")) {
+            sessionStorage.setItem("sharedPollId", "");
+            window.location.href = "/";
+          }
+  
+          dispatch({
+            type: "setrenderPollUI",
+            pollClickedData: "",
+          });
+          OnVote("test");
+        },4000);
+
+        })
+        .catch((error) => {
+          console.log(error);
+  
+          console.log("error");
         });
-        OnVote("test");
-      })
-      .catch((error) => {
-        console.log(error);
 
-        console.log("error");
-      });
+        
+         
+      
   };
 
   const handleVisulize = () => {
@@ -132,6 +148,29 @@ export default function PollingUi({ pollClickedData }) {
     });
   };
 
+
+// handling  share and toast 
+  const handleShare=(e)=>{
+
+    navigator.clipboard.writeText("http://localhost:5173/unitPoll/"+`${fetchPoll.pollid}`);
+    console.log("url copied toas invoked")
+    toastInvoke("Sharable Url Copied SuccessFully");
+      
+  }
+
+  function toastInvoke ( message,direction="top-right"){
+    toast(`🦄!${message}`,{
+      position: direction,
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      }); 
+  }
+
   return (
     <div className="pollingcontainer">
       <div className="pollUIContainer">
@@ -139,14 +178,18 @@ export default function PollingUi({ pollClickedData }) {
           <div className="pollUI--data">
             <div className="pollingUi--infoContainer">
               <p className="pollingUi--questionpollingUi--flex" id="Question">
-                <span className="PollUi--span">Question : </span>
+                <span className="PollUi--span">
+                  <u>Question</u> :{" "}
+                </span>
                 <span className="pollingUi--span-ans">
                   {" "}
                   {fetchPoll.question}
                 </span>
               </p>
               <p className="pollingUi--CategorypollingUi--flex" id="category">
-                <span className="pollingUi--span">category :</span>
+                <span className="pollingUi--span">
+                  <u>category </u>:
+                </span>
                 <span className="pollingUi--span-ans">
                   {fetchPoll.category?.map((ele) => {
                     return ele + "  ";
@@ -154,14 +197,18 @@ export default function PollingUi({ pollClickedData }) {
                 </span>
               </p>
               <p className="pollingUi--totvotespollingUi--flex">
-                <span className="pollingUi--span">Total-Votes :</span>{" "}
+                <span className="pollingUi--span">
+                  <u>Total-Votes</u> :
+                </span>{" "}
                 <span className="pollingUi--span-ans">
                   {" "}
                   {fetchPoll.totalVotes}
                 </span>
               </p>
               <p className="pollingUi--creatorpollingUi--flex">
-                <span className="pollingUi--span">Creator ID :</span>{" "}
+                <span className="pollingUi--span">
+                  <u>Creator ID</u> :
+                </span>{" "}
                 <span className="pollingUi--span-ans">
                   {" "}
                   {fetchPoll.creatorId}
@@ -170,7 +217,9 @@ export default function PollingUi({ pollClickedData }) {
             </div>
 
             <div className="pollingUi--optionContainer">
-              <span className="pollingUi--span">Option :</span>
+              <span className="pollingUi--span">
+                <u>Option</u> :
+              </span>
               {fetchPoll?.options?.map((option, index) => {
                 return (
                   <div key={index} className="pollingUi--insideOptionContainer">
@@ -182,7 +231,7 @@ export default function PollingUi({ pollClickedData }) {
                       onChange={() => handleItemClick(index)}
                       value={index}
                     />
-                    <label htmlFor={`radio-${index}`}>
+                    <label className="addSpace" htmlFor={`radio-${index}`}>
                       {fetchPoll?.options[index]}
                     </label>
                   </div>
@@ -197,9 +246,21 @@ export default function PollingUi({ pollClickedData }) {
         </div>
 
         {/* {submitBtn} */}
-        <button onClick={handlePolling}>Submit</button>
-        <button onClick={handleClose}>Close</button>
+        {/* <Button className=""/> */}
+        <span onClick={handleClose} className="pollUI--btn-pos pollUI--btn">
+          <CloseBtn display={"Close"} />
+        </span>
+        <button
+          className="pollUI--btn-pos pollUI--btn pollUI--submit btn-grad-submit"
+          onClick={handlePolling} >
+          Vote
+        </button>
+        <span  className="pollUI--btn-pos pollUI--btn pollUI--btn--share " onClick={handleShare} >
+          <ShareBtn display={"share"} />
+        </span>
       </div>
+
+      <ToastContainer />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import SignUp from "./SignUp";
 
 
+
 function Login() {
   const dispatch = useDispatch();
 
@@ -43,6 +44,7 @@ function Login() {
             sessionStorage.setItem("loginStatus","true")
             sessionStorage.setItem("loginId",response.data.result._id)
             sessionStorage.setItem("userName",response.data.result.name)
+            sessionStorage.setItem("profileUrl",response.data.result.profileUrl)
 
             if(sessionStorage.getItem("sharedPollId"))
             {
@@ -56,6 +58,10 @@ function Login() {
             dispatch({
                 type:"setUserName",
                 name:response.data.result.name,
+            })
+            dispatch({
+              type:"SetProfileUrl",
+              profileUrl: response.data.result.profileUrl,
             })
             dispatch({
                 type: "setPage",
@@ -102,9 +108,7 @@ function Login() {
   return (
     <div className="MainContainer">
       <h1>Login</h1>
-      <div className="imagecontainer">
-        <img className="profile" src={profile} alt="profile image"></img>
-      </div>
+
       <div className="form">
         <input
           type="email"

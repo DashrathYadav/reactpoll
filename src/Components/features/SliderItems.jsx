@@ -2,6 +2,7 @@ import React from 'react'
 import "./Slider.css"
 import { useDispatch } from 'react-redux'
 
+
 export const SliderItems = (props) => {
 
   const dispatch = useDispatch();
@@ -10,21 +11,23 @@ export const SliderItems = (props) => {
     const page = props.name;
     dispatch({
       type:type,
-      page:page,
+      featureSection:page,
     })
   };
   
+  
+
   return (
 
     <div className="Slider--div" onClick={handleClick}>
       <img
         className="Slider--profile Slider--icon"
-        src={props.iconUrl}
-        width={90}
+        src=  { props.iconUrl}
+        width={190}
         alt={props.name}
-        action="setPage"
+        action="setFeatureSection"
       ></img>
-      <h3>{props.name} </h3>
+      {/* <h3>{props.name} </h3> */}
     </div>
 
     )

@@ -15,6 +15,8 @@ const initialState={
     renderPollUI:false,
     pollData:"",
     sharedPollStatus:false,
+    profileUrl:"",
+    featureSection:"polls",
 };
 
 const componentReducer= createReducer(initialState,{
@@ -56,6 +58,16 @@ const componentReducer= createReducer(initialState,{
         console.log("Visulize clicked")
         state.pollData = payload.pollClickedData
         state.renderAnalytics = state.renderAnalytics;
+    },
+
+    SetProfileUrl :(state,payload)=>{
+        console.log("profile is setted",payload.profileUrl);
+        state.profileUrl=payload.profileUrl;
+    },
+
+    setFeatureSection:(state,payload)=>{
+        console.log("settting feature section to ",payload.featureSection);
+        state.featureSection=payload.featureSection;
     }
        
 })
