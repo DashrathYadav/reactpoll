@@ -1,16 +1,18 @@
 import React from 'react';
 import './About.css'; // Create a CSS file for styling
+import dasrath from '../../assets/dasrath.jpeg';
+import vishal from '../../assets/vishal.jpeg';
 
 const developers = [
   {
     name: 'Dasrath Ambika Yadav',
     role: 'Developer',
-    imageUrl: 'path_to_dasrath_image', // Add the path to the image for Dasrath
+    imageUrl: dasrath, // Add the path to the image for Dasrath
   },
   {
     name: 'Vishal Kumar Gupta',
     role: 'Developer',
-    imageUrl: 'path_to_vishal_image', // Add the path to the image for Vishal
+    imageUrl: vishal, // Add the path to the image for Vishal
   },
 ];
 

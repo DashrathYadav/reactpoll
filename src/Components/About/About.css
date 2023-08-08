@@ -11,23 +11,21 @@
   .About-developer-card {
     display: flex;
     flex-direction: column;
-    background-color: cyan;
     border-radius: 15px;
     align-items: center;
   }
   
   .About-profile-image {
-    background-color: red;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     overflow: hidden;
+    
   }
   
   .About-profileImage {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+
   }
   
   
