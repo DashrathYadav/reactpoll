@@ -152,7 +152,7 @@ export default function PollingUi({ pollClickedData }) {
 // handling  share and toast 
   const handleShare=(e)=>{
 
-    navigator.clipboard.writeText(`${windows.location.href}`+"/unitPoll/"+`${fetchPoll.pollid}`);
+    navigator.clipboard.writeText(`${window.location.href}`+"/unitPoll/"+`${fetchPoll.pollid}`);
     console.log("url copied toas invoked")
     toastInvoke("Sharable Url Copied SuccessFully");
       

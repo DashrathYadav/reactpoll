@@ -62,6 +62,16 @@ function SignUp() {
         //checking user signup and updating id and name in store
         if (response.status === 201) {
             console.log(response.data.result._id)
+
+            sessionStorage.setItem("loginStatus","true")
+            sessionStorage.setItem("loginId",response.data.result._id)
+            sessionStorage.setItem("userName",response.data.result.name)
+            sessionStorage.setItem("profileUrl",response.data.result.profileUrl)
+
+            if(sessionStorage.getItem("sharedPollId"))
+            {
+              location.reload();
+            }
             
             dispatch({
                 type:"setloginId",
