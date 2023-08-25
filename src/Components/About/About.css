@@ -10,10 +10,28 @@
   
   .About-developer-card {
     display: flex;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.575);
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+    padding: 10px;
+    margin-bottom: 10px;
     flex-direction: column;
+    transition: all .7s ease-in-out;
     border-radius: 15px;
     align-items: center;
   }
+
+  .About-developer-card:hover{
+    transform: scale(1.1);
+}
+
+  .About-para{
+    padding-top: 10px;
+    margin: auto;
+    text-align: center;
+    font-family: forte;
+    width: 80vw;
+  }
+
   
   .About-profile-image {
     width: 150px;
@@ -28,4 +46,6 @@
 
   }
   
-  
+  .About-developer-info{
+    text-align: center;
+  }
