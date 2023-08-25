@@ -150,9 +150,11 @@ export default function PollingUi({ pollClickedData }) {
 
 
 // handling  share and toast 
-  const handleShare=(e)=>{
-
-    navigator.clipboard.writeText(`${window.location.href}`+"/unitPoll/"+`${fetchPoll.pollid}`);
+    const handleShare=(e)=>{
+    const currentURL = window.location.href;
+    const cleanURL = currentURL.replace(/#.*$/, ''); // Remove everything after the #
+    console.log(cleanURL);
+    navigator.clipboard.writeText(cleanURL+"unitPoll/"+`${fetchPoll.pollid}`);
     console.log("url copied toas invoked")
     toastInvoke("Sharable Url Copied SuccessFully");
       
